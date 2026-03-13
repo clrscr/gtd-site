@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GTD — Getting Things Done for Mac</title>
+<meta name="description" content="A native macOS desktop app for practicing Getting Things Done. Local-first, private, powerful. No cloud. No subscription.">
+<meta name="theme-color" content="#2196F3">
+<meta property="og:title" content="GTD — Getting Things Done for Mac">
+<meta property="og:description" content="A native macOS desktop app for practicing Getting Things Done. Local-first, private, powerful.">
+<meta property="og:image" content="icon.png">
+<link rel="icon" type="image/png" href="icon.png">
+<style>
+  :root {
+    --blue: #2196F3;
+    --cyan: #00BCD4;
+    --dark: #0a0f1a;
+    --darker: #060b14;
+    --card: #111827;
+    --card-border: #1e293b;
+    --text: #e2e8f0;
+    --text-dim: #94a3b8;
+    --text-bright: #f8fafc;
+    --accent-gradient: linear-gradient(135deg, var(--blue), var(--cyan));
+    --glow: 0 0 80px rgba(33, 150, 243, 0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", system-ui, sans-serif;
+    background: var(--dark);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* --- NAV --- */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    background: rgba(10, 15, 26, 0.75);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: var(--text-bright);
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+  }
+  .nav-brand img { width: 32px; height: 32px; border-radius: 7px; }
+  .nav-links { display: flex; gap: 2rem; align-items: center; }
+  .nav-links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text-bright); }
+
+  /* --- HERO --- */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8rem 2rem 6rem;
+    position: relative;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(33,150,243,0.12) 0%, rgba(0,188,212,0.06) 40%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-icon {
+    width: 140px;
+    height: 140px;
+    border-radius: 32px;
+    margin-bottom: 2.5rem;
+    box-shadow: var(--glow);
+    position: relative;
+    z-index: 1;
+  }
+  .hero h1 {
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+    color: var(--text-bright);
+    margin-bottom: 1.25rem;
+    position: relative;
+    z-index: 1;
+  }
+  .hero h1 span {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero .subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+    color: var(--text-dim);
+    max-width: 600px;
+    margin-bottom: 2.5rem;
+    position: relative;
+    z-index: 1;
+    line-height: 1.7;
+  }
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 2rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary {
+    background: var(--accent-gradient);
+    color: #fff;
+    box-shadow: 0 4px 24px rgba(33,150,243,0.3);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(33,150,243,0.4);
+  }
+  .btn-secondary {
+    background: rgba(255,255,255,0.06);
+    color: var(--text);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .btn-secondary:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-2px);
+  }
+  .btn svg { width: 18px; height: 18px; }
+  .hero-meta {
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    position: relative;
+    z-index: 1;
+  }
+  .hero-meta span { margin: 0 0.5rem; opacity: 0.4; }
+
+  /* --- SECTIONS --- */
+  section {
+    padding: 6rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.75rem;
+  }
+  section h2 {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--text-bright);
+    margin-bottom: 1rem;
+    line-height: 1.15;
+  }
+  section .section-desc {
+    color: var(--text-dim);
+    font-size: 1.1rem;
+    max-width: 640px;
+    margin-bottom: 3rem;
+    line-height: 1.7;
+  }
+
+  /* --- METHODOLOGY --- */
+  .method-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+  }
+  .method-step {
+    text-align: center;
+    padding: 2rem 1rem;
+    border-radius: 16px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    transition: transform 0.2s, border-color 0.3s;
+  }
+  .method-step:hover {
+    transform: translateY(-4px);
+    border-color: rgba(33,150,243,0.3);
+  }
+  .method-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--accent-gradient);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  .method-step h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-bright);
+    margin-bottom: 0.5rem;
+  }
+  .method-step p {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  /* --- FEATURES GRID --- */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  .feature-card {
+    padding: 2rem;
+    border-radius: 16px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    transition: transform 0.2s, border-color 0.3s;
+  }
+  .feature-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(33,150,243,0.3);
+  }
+  .feature-icon {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .feature-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-bright);
+    margin-bottom: 0.5rem;
+  }
+  .feature-card p {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+
+  /* --- WORKFLOW SECTION --- */
+  .workflows {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+  .workflow-card {
+    padding: 2.5rem;
+    border-radius: 16px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    transition: transform 0.2s, border-color 0.3s;
+  }
+  .workflow-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(33,150,243,0.3);
+  }
+  .workflow-card .kbd {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    font-family: "SF Mono", "Menlo", monospace;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin-bottom: 1rem;
+  }
+  .workflow-card h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-bright);
+    margin-bottom: 0.5rem;
+  }
+  .workflow-card p {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+
+  /* --- PRIVACY BANNER --- */
+  .privacy-section {
+    text-align: center;
+    padding: 5rem 2rem;
+  }
+  .privacy-section h2 { margin-bottom: 1.25rem; }
+  .privacy-section .section-desc {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2.5rem;
+  }
+  .privacy-points {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+  .privacy-point {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .privacy-point .icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(33,150,243,0.1);
+    border: 1px solid rgba(33,150,243,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+  }
+  .privacy-point span {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    font-weight: 500;
+  }
+
+  /* --- AI SECTION --- */
+  .ai-card {
+    padding: 3rem;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(33,150,243,0.08), rgba(0,188,212,0.05));
+    border: 1px solid rgba(33,150,243,0.15);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .ai-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-bright);
+    margin-bottom: 0.75rem;
+  }
+  .ai-card > div p {
+    color: var(--text-dim);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+  .ai-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .ai-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    color: var(--text);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .ai-list li::before {
+    content: "";
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-gradient);
+    margin-top: 0.5rem;
+  }
+
+  /* --- SHORTCUTS --- */
+  .shortcuts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .shortcut-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    border-radius: 10px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+  }
+  .shortcut-item span {
+    font-size: 0.9rem;
+    color: var(--text);
+  }
+  .shortcut-item .kbd {
+    font-family: "SF Mono", "Menlo", monospace;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    background: rgba(255,255,255,0.05);
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.08);
+    white-space: nowrap;
+  }
+
+  /* --- CTA --- */
+  .cta-section {
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    position: relative;
+  }
+  .cta-section::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(33,150,243,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-section h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--text-bright);
+    margin-bottom: 1rem;
+  }
+  .cta-section p {
+    color: var(--text-dim);
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* --- FOOTER --- */
+  footer {
+    padding: 3rem 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    color: var(--text-dim);
+    font-size: 0.85rem;
+  }
+  footer a {
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  footer a:hover { color: var(--text-bright); }
+  footer .links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  /* --- RESPONSIVE --- */
+  @media (max-width: 900px) {
+    .method-grid { grid-template-columns: repeat(3, 1fr); }
+    .features-grid { grid-template-columns: repeat(2, 1fr); }
+    .workflows { grid-template-columns: 1fr; }
+    .ai-card { grid-template-columns: 1fr; }
+    .shortcuts-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .method-grid { grid-template-columns: 1fr 1fr; }
+    .features-grid { grid-template-columns: 1fr; }
+    .shortcuts-grid { grid-template-columns: 1fr; }
+    .nav-links { gap: 1rem; }
+    .nav-links a { font-size: 0.8rem; }
+    .privacy-points { gap: 1.5rem; }
+    section { padding: 4rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">
+    <img src="icon.png" alt="GTD" />
+    GTD
+  </a>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#workflows">Workflows</a>
+    <a href="#ai">AI</a>
+    <a href="user-manual.pdf">Manual</a>
+    <a href="https://github.com/clrscr/gtd/releases" class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Download</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img src="icon.png" alt="GTD App Icon" class="hero-icon" />
+  <h1>Getting Things Done<br /><span>without the noise.</span></h1>
+  <p class="subtitle">A native Mac app that implements GTD the way David Allen intended. Local-first and private by design, supercharged with state-of-the-art AI that turns hours of organizing into seconds.</p>
+  <div class="hero-buttons">
+    <a href="https://github.com/clrscr/gtd/releases" class="btn btn-primary">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download for Mac
+    </a>
+    <a href="user-manual.pdf" class="btn btn-secondary">Read the Manual</a>
+  </div>
+  <p class="hero-meta">macOS (Apple Silicon) <span>&bull;</span> v1.0.0-beta.1 <span>&bull;</span> Free &amp; open source</p>
+</section>
+
+<!-- METHODOLOGY -->
+<section id="methodology">
+  <p class="section-label">Methodology</p>
+  <h2>The five stages of GTD, built in.</h2>
+  <p class="section-desc">Every screen, workflow, and shortcut is designed around David Allen's trusted system. Not a generic to-do app with GTD bolted on.</p>
+  <div class="method-grid">
+    <div class="method-step">
+      <div class="method-num">1</div>
+      <h3>Capture</h3>
+      <p>Brain Dump anything on your mind into the Inbox. AI coaches you through it, surfacing forgotten commitments and open loops you'd miss on your own.</p>
+    </div>
+    <div class="method-step">
+      <div class="method-num">2</div>
+      <h3>Clarify</h3>
+      <p>Process each item and AI instantly suggests the right category, project, and context. What used to take judgment calls now takes a single click.</p>
+    </div>
+    <div class="method-step">
+      <div class="method-num">3</div>
+      <h3>Organize</h3>
+      <p>Seven GTD categories, projects, areas, and contexts keep everything where it belongs.</p>
+    </div>
+    <div class="method-step">
+      <div class="method-num">4</div>
+      <h3>Reflect</h3>
+      <p>Guided Weekly Review in six steps. The habit that keeps your system trustworthy.</p>
+    </div>
+    <div class="method-step">
+      <div class="method-num">5</div>
+      <h3>Engage</h3>
+      <p>Work from a clean system. AI considers your context, energy, and deadlines to recommend exactly what to do right now.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <p class="section-label">Features</p>
+  <h2>Everything GTD needs. Nothing it doesn't.</h2>
+  <p class="section-desc">Seven task categories, projects with stall detection, areas of responsibility, contexts, subtasks, recurrence, defer dates, and more.</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <span class="feature-icon" aria-hidden="true">&#x1F4E5;</span>
+      <h3>Inbox &amp; Clarification</h3>
+      <p>Universal capture bucket. Process items one-by-one — or let AI instantly suggest category, project, context, and subtasks for each item. Inbox zero in minutes, not hours.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon" aria-hidden="true">&#x26A1;</span>
+      <h3>Next Actions</h3>
+      <p>Drag-and-drop reorderable. Deferred tasks stay dimmed until their tickler date arrives. Overdue items highlighted in red.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon" aria-hidden="true">&#x1F4CB;</span>
+      <h3>Projects &amp; Areas</h3>
+      <p>Multi-step outcomes with status tracking and AI-powered next-step suggestions. "No next action" warnings prevent stalling. Areas reveal life-balance gaps.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon" aria-hidden="true">&#x23F1;</span>
+      <h3>Pomodoro Timer</h3>
+      <p>Built-in focus sessions linked to specific tasks. Work/break cycles with visual countdown and session analytics.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon" aria-hidden="true">&#x1F504;</span>
+      <h3>Recurrence</h3>
+      <p>Daily, weekly, monthly, yearly. Completing a recurring task auto-creates the next instance with the right due date.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon" aria-hidden="true">&#x1F4CA;</span>
+      <h3>Task Metrics</h3>
+      <p>Completion trends, streaks, per-project breakdowns. See where your time goes and whether your system is healthy.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon" aria-hidden="true">&#x1F50D;</span>
+      <h3>Global Search</h3>
+      <p>Search across all tasks with filters for category, project, context, and due date range. Results update as you type.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon" aria-hidden="true">&#x270F;&#xFE0F;</span>
+      <h3>Bulk Edit</h3>
+      <p>Select multiple tasks and change category, project, context, or dates in one operation. Multi-level undo/redo on everything.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon" aria-hidden="true">&#x1F4BE;</span>
+      <h3>Backup &amp; Restore</h3>
+      <p>One-click backups with integrity checks. CSV import/export. Safety backup before every restore. Your data, your control.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WORKFLOWS -->
+<section id="workflows">
+  <p class="section-label">Workflows</p>
+  <h2>Built-in GTD rituals.</h2>
+  <p class="section-desc">The workflows that make GTD work aren't afterthoughts here. They're first-class features with dedicated UIs and keyboard shortcuts.</p>
+  <div class="workflows">
+    <div class="workflow-card">
+      <span class="kbd">&#8984;&#8679;B</span>
+      <h3>Brain Dump</h3>
+      <p>Rapid-fire capture or AI-guided prompts that intelligently probe your projects, areas, and commitments to surface the things you've forgotten. Like having a personal executive coach clear your head.</p>
+    </div>
+    <div class="workflow-card">
+      <span class="kbd">&#8984;&#8679;W</span>
+      <h3>Weekly Review</h3>
+      <p>Six guided steps: process Inbox, review projects, check areas, follow up on delegated items, prune Someday, refresh Next Actions. Jump between steps with Option+1&ndash;6.</p>
+    </div>
+    <div class="workflow-card">
+      <span class="kbd">&#8984;&#8679;N</span>
+      <h3>What's Next?</h3>
+      <p>AI analyzes your entire system — deadlines, contexts, energy level, available time — and recommends the single best task to work on right now, with clear reasoning for why. Decision fatigue, eliminated.</p>
+    </div>
+    <div class="workflow-card">
+      <span class="kbd">&#8984;&#8679;P</span>
+      <h3>Pomodoro Focus</h3>
+      <p>Link a task, start the timer, and work. Configurable session lengths, automatic break cycles, and per-task time analytics.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AI -->
+<section id="ai">
+  <p class="section-label">AI-Powered</p>
+  <h2>State-of-the-art AI, woven into every workflow.</h2>
+  <p class="section-desc">GTD connects to the most capable large language models available — Claude, GPT, and any OpenAI-compatible endpoint — to radically simplify the hardest parts of Getting Things Done. Every AI feature is opt-in, so you're always in control.</p>
+  <div class="ai-card">
+    <div>
+      <h3>Your AI productivity partner</h3>
+      <p>The built-in assistant panel sees your full system — tasks, projects, areas, contexts, deadlines — and uses that context to give advice no generic chatbot ever could. Ask it to break down an overwhelming project into concrete next actions, identify commitments you're neglecting, or just think through a decision with you.</p>
+      <p>Drop in meeting notes, briefs, or any document and AI instantly extracts a structured project with actionable tasks — work that used to take 30 minutes happens in seconds.</p>
+      <p style="margin-top: 0.75rem; font-size: 0.85rem; color: var(--text-dim);">Bring your own API key. Supports Claude, OpenAI-compatible endpoints, and NanoGPT. Keys stored securely in your OS keychain.</p>
+    </div>
+    <ul class="ai-list">
+      <li><strong>Brain Dump coach</strong> — AI adapts its questions to your specific projects and areas, uncovering open loops and forgotten commitments you'd never surface alone</li>
+      <li><strong>One-click clarification</strong> — process your Inbox at lightning speed as AI suggests the right category, project, context, and even subtask breakdowns for every item</li>
+      <li><strong>What's Next?</strong> — AI weighs deadlines, context, energy level, and time available to recommend exactly what to work on right now, with clear reasoning</li>
+      <li><strong>Suggest Next Step</strong> — when a project stalls, AI analyzes its current state and proposes the concrete next action to get it moving again</li>
+      <li><strong>Document-to-project import</strong> — feed it a meeting transcript, project brief, or brainstorm and get a fully structured project with tasks in seconds</li>
+      <li><strong>Always optional</strong> — every AI feature has a full manual fallback, and data is only sent to your chosen provider when you explicitly ask</li>
+    </ul>
+  </div>
+</section>
+
+<!-- PRIVACY -->
+<section class="privacy-section">
+  <p class="section-label">Privacy</p>
+  <h2>Your system. Your Mac. Never the cloud.</h2>
+  <p class="section-desc">GTD stores everything in a local SQLite database on your Mac. No account, no subscription, no syncing, no telemetry. If you use AI features, data is sent to the provider only when you explicitly ask.</p>
+  <div class="privacy-points">
+    <div class="privacy-point">
+      <div class="icon">&#x1F512;</div>
+      <span>100% local storage</span>
+    </div>
+    <div class="privacy-point">
+      <div class="icon">&#x1F6AB;</div>
+      <span>No account required</span>
+    </div>
+    <div class="privacy-point">
+      <div class="icon">&#x1F4B0;</div>
+      <span>No subscription</span>
+    </div>
+    <div class="privacy-point">
+      <div class="icon">&#x1F310;</div>
+      <span>No telemetry</span>
+    </div>
+    <div class="privacy-point">
+      <div class="icon">&#x1F4E6;</div>
+      <span>Open source</span>
+    </div>
+  </div>
+</section>
+
+<!-- SHORTCUTS -->
+<section id="shortcuts">
+  <p class="section-label">Keyboard-driven</p>
+  <h2>Fast by design.</h2>
+  <p class="section-desc">Every major action has a shortcut. Stay in flow without reaching for the mouse.</p>
+  <div class="shortcuts-grid">
+    <div class="shortcut-item"><span>New Task</span> <span class="kbd">&#8984;N</span></div>
+    <div class="shortcut-item"><span>Brain Dump</span> <span class="kbd">&#8984;&#8679;B</span></div>
+    <div class="shortcut-item"><span>Weekly Review</span> <span class="kbd">&#8984;&#8679;W</span></div>
+    <div class="shortcut-item"><span>What's Next?</span> <span class="kbd">&#8984;&#8679;N</span></div>
+    <div class="shortcut-item"><span>Pomodoro</span> <span class="kbd">&#8984;&#8679;P</span></div>
+    <div class="shortcut-item"><span>Bulk Edit</span> <span class="kbd">&#8984;E</span></div>
+    <div class="shortcut-item"><span>Search</span> <span class="kbd">&#8984;F</span></div>
+    <div class="shortcut-item"><span>Assistant</span> <span class="kbd">&#8984;J</span></div>
+    <div class="shortcut-item"><span>Undo / Redo</span> <span class="kbd">&#8984;Z</span></div>
+    <div class="shortcut-item"><span>Settings</span> <span class="kbd">&#8984;,</span></div>
+    <div class="shortcut-item"><span>Toggle Sidebar</span> <span class="kbd">&#8984;&#8997;S</span></div>
+    <div class="shortcut-item"><span>Toggle Toolbar</span> <span class="kbd">&#8984;&#8997;T</span></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Start getting things done.</h2>
+  <p>Free, open source, and built for people who take their productivity seriously.</p>
+  <div class="hero-buttons">
+    <a href="https://github.com/clrscr/gtd/releases" class="btn btn-primary">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download for Mac
+    </a>
+    <a href="https://github.com/clrscr/gtd" class="btn btn-secondary">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      View on GitHub
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="links">
+    <a href="https://github.com/clrscr/gtd/releases">Releases</a>
+    <a href="user-manual.pdf">User Manual</a>
+    <a href="https://github.com/clrscr/gtd">Source Code</a>
+    <a href="https://github.com/clrscr/gtd/issues">Report a Bug</a>
+  </div>
+  <p>A <strong>MadTech</strong> Joint</p>
+</footer>
+
+</body>
+</html>
