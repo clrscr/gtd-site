@@ -185,6 +185,15 @@
     z-index: 1;
   }
   .hero-meta span { margin: 0 0.5rem; opacity: 0.4; }
+  .hero-trust {
+    margin-top: 0.75rem;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    opacity: 0.7;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 0.02em;
+  }
 
   /* --- SECTIONS --- */
   section {
@@ -381,6 +390,163 @@
     line-height: 1.6;
   }
 
+  /* --- TODAY PANEL --- */
+  .today-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+  .today-card {
+    padding: 2rem;
+    border-radius: 16px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    transition: transform 0.2s, border-color 0.3s;
+  }
+  .today-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(33,150,243,0.3);
+  }
+  .today-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-bright);
+    margin-bottom: 0.5rem;
+  }
+  .today-card p {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+  .today-card .card-icon {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  /* --- FOCUS OVERDRIVE --- */
+  .routine-category {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+  }
+  .routine-category:first-of-type { margin-top: 0; }
+  .routine-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .routine-grid.three-col {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .routine-card {
+    padding: 1.5rem;
+    border-radius: 14px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    transition: transform 0.2s, border-color 0.3s;
+  }
+  .routine-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(33,150,243,0.3);
+  }
+  .routine-card h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-bright);
+    margin-bottom: 0.4rem;
+  }
+  .routine-card p {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+  .overdrive-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--card-border);
+  }
+  .overdrive-features li {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+    list-style: none;
+  }
+  .overdrive-features li strong { color: var(--text); }
+  .overdrive-features li code {
+    font-family: "SF Mono", "Menlo", monospace;
+    font-size: 0.82rem;
+    background: rgba(255,255,255,0.06);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  /* --- NATIVE MACOS --- */
+  .native-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+  .native-card {
+    padding: 1.75rem;
+    border-radius: 14px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    transition: transform 0.2s, border-color 0.3s;
+  }
+  .native-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(33,150,243,0.3);
+  }
+  .native-card .native-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(33,150,243,0.1);
+    border: 1px solid rgba(33,150,243,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .native-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-bright);
+    margin-bottom: 0.35rem;
+  }
+  .native-card p {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  /* --- MID-PAGE CTA --- */
+  .midpage-cta {
+    text-align: center;
+    padding: 3rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .midpage-cta p {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    margin-bottom: 1.25rem;
+  }
+
   /* --- PRIVACY BANNER --- */
   .privacy-section {
     text-align: center;
@@ -450,16 +616,17 @@
     gap: 0.75rem;
   }
   .ai-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-    color: var(--text);
     font-size: 0.95rem;
+    color: var(--text);
     line-height: 1.5;
+    padding-left: 1rem;
+    position: relative;
   }
   .ai-list li::before {
     content: "";
-    flex-shrink: 0;
+    position: absolute;
+    left: 0;
+    top: 0.55rem;
     width: 6px;
     height: 6px;
     border-radius: 50%;
@@ -548,91 +715,149 @@
   }
   .install-note strong { color: var(--text); }
 
-  /* --- RELEASE NOTES --- */
+  /* --- RELEASE NOTES (TERMINAL STYLE) --- */
+  .terminal-window {
+    background: #0c0c0c;
+    border: 1px solid #2a2a2a;
+    border-radius: 10px;
+    overflow: hidden;
+    font-family: "SF Mono", "Menlo", "Courier New", monospace;
+  }
+  .terminal-titlebar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: #1a1a1a;
+    border-bottom: 1px solid #2a2a2a;
+  }
+  .terminal-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+  .terminal-dot.red { background: #ff5f57; }
+  .terminal-dot.yellow { background: #febc2e; }
+  .terminal-dot.green { background: #28c840; }
+  .terminal-title {
+    flex: 1;
+    text-align: center;
+    font-size: 0.75rem;
+    color: #666;
+    margin-right: 2.25rem;
+  }
+  .terminal-body {
+    padding: 1.5rem;
+    max-height: none;
+  }
   .releases-timeline {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 0;
   }
   .release-entry {
-    padding: 2.5rem;
-    border-radius: 16px;
-    background: var(--card);
-    border: 1px solid var(--card-border);
+    padding: 1.25rem 0;
+    border-bottom: 1px solid #1a1a1a;
   }
-  .release-entry.latest {
-    border-color: rgba(33,150,243,0.3);
+  .release-entry:last-child { border-bottom: none; }
+  .release-entry.latest {}
+  .release-prompt {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+  }
+  .release-prompt::before {
+    content: "$";
+    color: #28c840;
+    font-weight: 700;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+  .release-cmd {
+    color: #28c840;
+    font-size: 0.85rem;
+    font-weight: 400;
+  }
+  .release-cmd .tag-name {
+    color: var(--cyan);
   }
   .release-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.25rem;
-    flex-wrap: wrap;
+    display: inline;
   }
   .release-header h3 {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--text-bright);
+    display: none;
   }
   .release-tag {
-    font-family: "SF Mono", "Menlo", monospace;
-    font-size: 0.8rem;
-    color: var(--text-dim);
-    background: rgba(255,255,255,0.06);
-    padding: 0.2rem 0.6rem;
-    border-radius: 6px;
-    border: 1px solid rgba(255,255,255,0.08);
+    font-family: inherit;
+    font-size: 0.85rem;
+    color: var(--cyan);
+    background: none;
+    padding: 0;
+    border-radius: 0;
+    border: none;
   }
   .release-badge {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    padding: 0.2rem 0.6rem;
-    border-radius: 6px;
-    background: var(--accent-gradient);
-    color: #fff;
+    padding: 0.15rem 0.45rem;
+    border-radius: 3px;
+    background: #28c840;
+    color: #000;
   }
   .release-date {
-    font-size: 0.85rem;
-    color: var(--text-dim);
-    margin-left: auto;
+    font-size: 0.8rem;
+    color: #555;
+  }
+  .release-body {
+    padding-left: 1rem;
+    border-left: 1px solid #1a1a1a;
+    margin-left: 0.35rem;
+    margin-top: 0.5rem;
+  }
+  .release-body p {
+    font-size: 0.8rem;
+    color: #888;
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
   }
   .release-body h4 {
-    font-size: 0.95rem;
+    font-size: 0.75rem;
     font-weight: 700;
-    color: var(--text);
-    margin-top: 1.25rem;
-    margin-bottom: 0.5rem;
+    color: #28c840;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 0.75rem;
+    margin-bottom: 0.35rem;
+  }
+  .release-body h4::before {
+    content: "# ";
+    color: #555;
   }
   .release-body ul {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.25rem;
   }
   .release-body li {
-    font-size: 0.9rem;
-    color: var(--text-dim);
-    line-height: 1.5;
-    padding-left: 1rem;
+    font-size: 0.8rem;
+    color: #999;
+    line-height: 1.45;
+    padding-left: 1.25rem;
     position: relative;
   }
   .release-body li::before {
-    content: "";
+    content: "+";
     position: absolute;
     left: 0;
-    top: 0.55rem;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.25);
-  }
-  .release-body p {
-    font-size: 0.9rem;
-    color: var(--text-dim);
-    line-height: 1.6;
+    top: 0;
+    color: #28c840;
+    font-weight: 700;
+    font-size: 0.8rem;
   }
 
   /* --- CTA --- */
@@ -667,6 +892,133 @@
     margin-left: auto;
     margin-right: auto;
   }
+  .cta-trust {
+    margin-top: 1.5rem;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    opacity: 0.7;
+  }
+
+  /* --- CRT SCANLINE OVERLAY --- */
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px
+    );
+  }
+
+  /* --- CROSSHAIR CURSOR --- */
+  body { cursor: crosshair; }
+  a, button, .btn, input, select, textarea, [role="button"] { cursor: pointer; }
+
+  /* --- GLITCH EFFECT ON WARNING BANNERS --- */
+  .warning-glitch {
+    display: inline-block;
+    position: relative;
+    transition: all 0.1s;
+  }
+  .warning-glitch:hover {
+    animation: glitch 0.3s ease-in-out;
+  }
+  @keyframes glitch {
+    0% { text-shadow: none; transform: translate(0); }
+    20% { text-shadow: -2px 0 #ff0040, 2px 0 #00ffff; transform: translate(-1px, 1px); }
+    40% { text-shadow: 2px 0 #ff0040, -2px 0 #00ffff; transform: translate(1px, -1px); }
+    60% { text-shadow: -1px 0 #ff0040, 1px 0 #00ffff; transform: translate(1px, 0); }
+    80% { text-shadow: 1px 0 #ff0040, -1px 0 #00ffff; transform: translate(-1px, 0); }
+    100% { text-shadow: none; transform: translate(0); }
+  }
+
+  /* --- RETRO FOOTER BADGES --- */
+  .visitor-counter {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+  }
+  .counter-badge {
+    display: inline-block;
+    font-family: "SF Mono", "Menlo", "Courier New", monospace;
+    background: #000;
+    color: #00ff00;
+    padding: 0.2rem 0.6rem;
+    border: 1px solid #333;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-shadow: 0 0 4px rgba(0, 255, 0, 0.4);
+  }
+  .best-viewed {
+    display: block;
+    margin-top: 0.75rem;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    opacity: 0.5;
+    font-style: italic;
+  }
+
+  /* --- HERO TYPING CURSOR --- */
+  .typing-cursor {
+    display: inline-block;
+    width: 3px;
+    height: 0.9em;
+    background: var(--cyan);
+    margin-left: 2px;
+    vertical-align: baseline;
+    animation: blink-cursor 0.6s step-end infinite;
+  }
+  .typing-cursor.done {
+    animation: blink-cursor 0.6s step-end 3;
+    animation-fill-mode: forwards;
+  }
+  .typing-cursor.hidden { display: none; }
+  @keyframes blink-cursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  /* --- KONAMI CANVAS --- */
+  #matrix-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  #matrix-canvas.active { opacity: 1; }
+  #matrix-canvas.fade-out { opacity: 0; }
+
+  /* --- TERMINAL MOTD --- */
+  .terminal-motd {
+    font-family: "SF Mono", "Menlo", "Courier New", monospace;
+    font-size: clamp(0.3rem, 0.7vw, 0.5rem);
+    line-height: 1.15;
+    color: #28c840;
+    opacity: 0.4;
+    white-space: pre;
+    letter-spacing: 0.03em;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid #1a1a1a;
+    overflow-x: auto;
+  }
 
   /* --- FOOTER --- */
   footer {
@@ -698,6 +1050,11 @@
     .shortcuts-grid { grid-template-columns: repeat(2, 1fr); }
     .install-steps { grid-template-columns: 1fr; }
     .release-date { margin-left: 0; width: 100%; }
+    .today-grid { grid-template-columns: 1fr; }
+    .routine-grid { grid-template-columns: repeat(2, 1fr); }
+    .routine-grid.three-col { grid-template-columns: repeat(2, 1fr); }
+    .native-grid { grid-template-columns: 1fr; }
+    .overdrive-features { grid-template-columns: 1fr; }
   }
   @media (max-width: 600px) {
     .method-grid { grid-template-columns: 1fr 1fr; }
@@ -707,10 +1064,34 @@
     .nav-links a { font-size: 0.8rem; }
     .privacy-points { gap: 1.5rem; }
     section { padding: 4rem 1.25rem; }
+    .routine-grid { grid-template-columns: 1fr; }
+    .routine-grid.three-col { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
+
+<!--
+
+     ╔══════════════════════════════════════════════════════════════╗
+     ║                                                              ║
+     ║   > ACCESS GRANTED                                           ║
+     ║   > OPERATOR CLEARANCE: LEVEL 5                              ║
+     ║   > WELCOME TO THE SOURCE, FELLOW TRAVELER                   ║
+     ║                                                              ║
+     ║   You inspect the source of your tools. Good instinct.       ║
+     ║   That's exactly the kind of behavior this app was           ║
+     ║   built for.                                                 ║
+     ║                                                              ║
+     ║   While you're here:                                         ║
+     ║     - The Konami Code still works. Try it.                   ║
+     ║     - https://github.com/clrscr/gtd                         ║
+     ║                                                              ║
+     ║   "Your mental RAM is full. Time to upgrade."                ║
+     ║                                                              ║
+     ╚══════════════════════════════════════════════════════════════╝
+
+-->
 
 <!-- NAV -->
 <nav>
@@ -720,27 +1101,29 @@
   </a>
   <div class="nav-links">
     <a href="#features">Features</a>
+    <a href="#overdrive">Focus Overdrive</a>
     <a href="#workflows">Workflows</a>
     <a href="#ai">AI</a>
     <a href="#releases">Releases</a>
     <a href="user-manual.pdf">Manual</a>
-    <a href="https://github.com/clrscr/gtd-site/raw/main/GTD-1.0.0-beta.1.dmg" class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Download</a>
+    <a href="https://github.com/clrscr/gtd-site/raw/main/GTD-1.0.0-beta.1.dmg" class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Deploy to Mac</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <img src="icon.png" alt="TaskBlaster Pro App Icon" class="hero-icon" />
-  <h1>Welcome to the<br /><span>Next Millennium of Productivity.</span></h1>
-  <p class="subtitle">Are you drowning in the data stream of the Information Superhighway? Standard to-do lists are obsolete. You need a centralized, high-bandwidth command center to process your life. Enter TaskBlaster Pro &mdash; a natively compiled, local-first workstation app engineered to exploit the raw computational power of your Mac.</p>
+  <h1>Your Mental RAM Is Full.<br /><span>Time to Upgrade the Operating System.</span></h1>
+  <p class="subtitle">Every broken commitment is an open loop burning background cycles in your brain. Every &ldquo;I&rsquo;ll get to it later&rdquo; is a memory leak draining your throughput. Cloud-dependent, subscription-hungry to-do apps won&rsquo;t fix this &mdash; they&rsquo;re the digital equivalent of shuffling papers. You need a real system. A natively compiled, local-first command center that implements the complete Getting Things Done methodology on bare metal.</p>
   <div class="hero-buttons">
     <a href="https://github.com/clrscr/gtd-site/raw/main/GTD-1.0.0-beta.1.dmg" class="btn btn-primary">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Download for Mac
+      Deploy to Your Mac
     </a>
     <a href="user-manual.pdf" class="btn btn-secondary">Read the Manual</a>
   </div>
-  <p class="hero-meta">macOS (Apple Silicon) <span>&bull;</span> v1.0.0-beta.1 <span>&bull;</span> Free &amp; open source</p>
+  <p class="hero-meta">macOS (Apple Silicon) <span>&bull;</span> v1.0.0-beta.1 <span>&bull;</span> Free &amp; open source <span>&bull;</span> No account required</p>
+  <p class="hero-trust">No account. No subscription. No telemetry. Just your Mac and your mind.</p>
 </section>
 
 <!-- SCREENSHOTS -->
@@ -759,46 +1142,75 @@
 <section id="methodology">
   <p class="section-label">Core Protocol</p>
   <h2>Five-stage processing pipeline.</h2>
-  <p class="section-desc">Built exclusively around David Allen's trusted methodology. TaskBlaster Pro doesn't just store your tasks &mdash; it helps you execute them. Five stages. Zero open loops. Maximum throughput.</p>
+  <p class="section-desc">Most apps give you a checkbox and call it GTD. TaskBlaster Pro implements the complete five-stage processing pipeline with purpose-built interfaces for each stage. Zero open loops. Maximum throughput.</p>
   <div class="method-grid">
     <div class="method-step">
       <div class="method-num">1</div>
       <h3>Capture</h3>
-      <p>Dump the contents of your wetware into the Inbox buffer. The AI-coached Brain Dump module probes your commitments and surfaces open loops you didn't even know you had.</p>
+      <p>Dump the contents of your wetware into the Inbox buffer. The AI-coached Brain Dump module probes your commitments and surfaces open loops you didn&rsquo;t even know you had. Ctrl+Option+Space captures from any app, system-wide &mdash; zero context-switch penalty.</p>
     </div>
     <div class="method-step">
       <div class="method-num">2</div>
       <h3>Clarify</h3>
-      <p>Feed each item through the Task Synthesis System. AI instantly classifies category, project, and context. What used to take judgment calls now takes a single click.</p>
+      <p>Feed each item through the Task Synthesis System. AI instantly classifies category, project, context, and subtask decomposition. What used to take judgment calls now takes a single click.</p>
     </div>
     <div class="method-step">
       <div class="method-num">3</div>
       <h3>Organize</h3>
-      <p>Seven GTD categories, projects with stall detection, areas of responsibility, and contexts route every item to its correct memory address.</p>
+      <p>Seven GTD categories, projects with stall detection, areas of responsibility, and contexts route every item to its correct memory address. Defer dates hide items until D-Day. The tickler system does the remembering for you.</p>
     </div>
     <div class="method-step">
       <div class="method-num">4</div>
       <h3>Reflect</h3>
-      <p>Execute the six-stage Weekly Review subroutine. Defragment your system. Prune dead references. The habit that keeps your trusted system trustworthy.</p>
+      <p>Execute the six-stage Weekly Review subroutine. Defragment your system. Prune dead references. Flag stale projects. The habit that keeps your trusted system trustworthy.</p>
     </div>
     <div class="method-step">
       <div class="method-num">5</div>
       <h3>Engage</h3>
-      <p>Work from a clean system. The Cognitive Routing Engine analyzes your context, energy level, and deadlines to recommend exactly what to execute right now.</p>
+      <p>Work from a clean system. The Cognitive Routing Engine recommends exactly what to execute right now. Complete a task and the system instantly queues up the next optimal action &mdash; zero downtime between executions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TODAY PANEL -->
+<section id="today">
+  <p class="section-label">Daily Operations Center</p>
+  <h2>Boot up. See everything that matters. Execute.</h2>
+  <p class="section-desc">One screen. Every obligation that demands your attention today. No digging through categories. No manual filtering. The system computes your daily operations manifest automatically.</p>
+  <div class="today-grid">
+    <div class="today-card">
+      <span class="card-icon" aria-hidden="true">&#x1F4CB;</span>
+      <h3>Today Panel</h3>
+      <p>Overdue items flagged in red alert. Due-today tasks queued for execution. Deferred items that just came off the tickler, surfacing exactly when you need them. Your entire daily workload, synthesized into a single unified view.</p>
+    </div>
+    <div class="today-card">
+      <span class="card-icon" aria-hidden="true">&#x26A1;</span>
+      <h3>Task Completion Chaining</h3>
+      <p>Complete a task and a floating command prompt instantly surfaces the next action in the same project &mdash; or your top-priority next action if the project queue is empty. Zero cognitive switching cost. Zero momentum loss.</p>
+    </div>
+    <div class="today-card">
+      <span class="card-icon" aria-hidden="true">&#x1F6A6;</span>
+      <h3>Waiting For Traffic Lights</h3>
+      <p>Delegated items are color-coded by urgency. Red = overdue follow-up. Accent = due today. Green = on schedule. You&rsquo;ll never let a delegated ball drop again.</p>
+    </div>
+    <div class="today-card">
+      <span class="card-icon" aria-hidden="true">&#x23F0;</span>
+      <h3>Tickler System</h3>
+      <p>Defer tasks into the future with surgical precision. Items vanish from your active lists until the exact date they become actionable, then auto-surface on D-Day. Out of sight, on schedule.</p>
     </div>
   </div>
 </section>
 
 <!-- WARNING BANNER -->
 <section style="text-align: center; padding: 2rem;">
-  <p style="font-size: 1.3rem; font-weight: 800; letter-spacing: 0.05em; color: #fbbf24;">&#x26A0;&#xFE0F; WARNING: EXTREME PRODUCTIVITY INSIDE &#x26A0;&#xFE0F;</p>
+  <p class="warning-glitch" style="font-size: 1.3rem; font-weight: 800; letter-spacing: 0.05em; color: #fbbf24;">&#x26A0;&#xFE0F; WARNING: EXTREME PRODUCTIVITY INSIDE &#x26A0;&#xFE0F;</p>
 </section>
 
 <!-- FEATURES -->
 <section id="features">
   <p class="section-label">System Specifications</p>
   <h2>Enterprise-grade feature matrix.</h2>
-  <p class="section-desc">Seven task categories, projects with stall detection, areas of responsibility, contexts, subtasks, recurrence, defer dates, and more. This isn't a to-do list. It's a command center.</p>
+  <p class="section-desc">Seven task categories, projects with stall detection, areas of responsibility, contexts, subtasks, recurrence, defer dates, and more. This isn&rsquo;t a to-do list. It&rsquo;s a command center.</p>
   <div class="features-grid">
     <div class="feature-card">
       <span class="feature-icon" aria-hidden="true">&#x1F4E5;</span>
@@ -808,17 +1220,17 @@
     <div class="feature-card">
       <span class="feature-icon" aria-hidden="true">&#x26A1;</span>
       <h3>Next Actions Queue</h3>
-      <p>Priority-sorted execution pipeline with drag-and-drop reordering. Deferred tasks stay in standby until their tickler date triggers. Overdue items flagged in red alert.</p>
+      <p>Priority-sorted execution pipeline with drag-and-drop reordering. Deferred tasks stay in standby until their tickler date triggers. Overdue items flagged in red alert. Context-filtered for situational awareness.</p>
     </div>
     <div class="feature-card">
       <span class="feature-icon" aria-hidden="true">&#x1F4CB;</span>
       <h3>Project &amp; Area Matrix</h3>
-      <p>Multi-step outcomes with status tracking and AI-powered next-step suggestions. "No next action" stall warnings prevent silent project death. Area scans reveal life-balance allocation gaps.</p>
+      <p>Multi-step outcomes with status tracking and AI-powered next-step suggestions. &ldquo;No next action&rdquo; stall warnings prevent silent project death. Area scans reveal life-balance allocation gaps before they become crises.</p>
     </div>
     <div class="feature-card">
       <span class="feature-icon" aria-hidden="true">&#x23F1;</span>
-      <h3>Turbo-Powered Pomo Architecture</h3>
-      <p>Lock into the zone. Built-in, hardware-accelerated focus sessions complete with visual countdowns and granular, per-task analytic telemetry. Work/break cycles keep your CPU from overheating.</p>
+      <h3>Turbo Pomo Engine</h3>
+      <p>Lock into the zone. Configurable work/break cycles with visual countdowns, per-task analytic telemetry, and automatic session progression. Your Dock icon renders a live progress ring. The menu bar counts down in real-time. Your CPU never overheats.</p>
     </div>
     <div class="feature-card">
       <span class="feature-icon" aria-hidden="true">&#x1F504;</span>
@@ -828,7 +1240,7 @@
     <div class="feature-card">
       <span class="feature-icon" aria-hidden="true">&#x1F4CA;</span>
       <h3>Productivity Telemetry</h3>
-      <p>Completion trends, streaks, per-project breakdowns, and focus-time analytics. Real-time instrumentation of your personal throughput. Are you operating at peak capacity?</p>
+      <p>Completion trends, streaks, per-project breakdowns, focus-time analytics, and Pomo session history. Real-time instrumentation of your personal throughput. Are you operating at peak capacity?</p>
     </div>
     <div class="feature-card">
       <span class="feature-icon" aria-hidden="true">&#x1F50D;</span>
@@ -838,21 +1250,117 @@
     <div class="feature-card">
       <span class="feature-icon" aria-hidden="true">&#x270F;&#xFE0F;</span>
       <h3>Batch Processing Mode</h3>
-      <p>Select multiple tasks and execute category, project, context, or date mutations in one atomic operation. Multi-level undo/redo prevents catastrophic data loss.</p>
+      <p>Select multiple tasks and execute category, project, context, or date mutations in one atomic operation. AI-powered batch suggestions for context and duration. Multi-level undo/redo prevents catastrophic data loss.</p>
     </div>
     <div class="feature-card">
       <span class="feature-icon" aria-hidden="true">&#x1F4BE;</span>
       <h3>Failsafe Backup System</h3>
-      <p>One-click database snapshots with integrity verification. CSV import/export for interoperability. Automatic safety backup before every restore. Your data. Your disk. Your rules.</p>
+      <p>One-click database snapshots with integrity verification. Automatic safety backup before every restore. CSV import/export for interoperability. Your data. Your disk. Your rules.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon" aria-hidden="true">&#x1F9E9;</span>
+      <h3>Subtask Decomposition</h3>
+      <p>Break complex tasks into nested subtasks without the overhead of a full project. Check off subtasks independently. The AI can auto-decompose on demand &mdash; or do it manually. Granular without the bureaucracy.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon" aria-hidden="true">&#x1F4C4;</span>
+      <h3>Document Ingestion Pipeline</h3>
+      <p>Feed meeting transcripts, project briefs, or brainstorm dumps into the TSS. It extracts a fully structured project with actionable tasks in seconds. Thirty minutes of processing, synthesized in one click.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon" aria-hidden="true">&#x1F4E4;</span>
+      <h3>CSV Import/Export Pipeline</h3>
+      <p>Interoperability guaranteed. Export your entire system to CSV for external analysis, import tasks from any source, auto-create missing projects and contexts on ingest. Your data speaks every format.</p>
     </div>
   </div>
 </section>
+
+<!-- FOCUS OVERDRIVE -->
+<section id="overdrive">
+  <p class="section-label">Focus Overdrive Engine</p>
+  <h2>11 battle-tested focus protocols. One state machine. Zero wasted sessions.</h2>
+  <p class="section-desc">Standard pomodoro timers count down 25 minutes and call it productivity. Focus Overdrive is a deterministic state-machine engine with phase transition gates, per-phase prep checklists, wall cues, and note capture built into every cycle. Choose from 11 bundled routines purpose-built for specific work modes &mdash; or program your own.</p>
+
+  <p class="routine-category">Learning Protocols</p>
+  <div class="routine-grid">
+    <div class="routine-card">
+      <h4>Video Study</h4>
+      <p>20-minute focused watch blocks with forced synthesis breaks. Rewind-on-drift discipline built in. 45-minute wall cue to stand, stretch, and switch to speakers.</p>
+    </div>
+    <div class="routine-card">
+      <h4>Audio Learning</h4>
+      <p>Listen at target speed while keeping hands and body active. Mandatory takeaway capture every cycle &mdash; if you can&rsquo;t summarize it, you didn&rsquo;t absorb it.</p>
+    </div>
+    <div class="routine-card">
+      <h4>Digital Reading</h4>
+      <p>Spoken Content pacing with eye-tracking. 15-minute blocks, forced summarization gates. Prevents the scroll-without-reading trap.</p>
+    </div>
+    <div class="routine-card">
+      <h4>Paper Reading</h4>
+      <p>Analog focus with a visual pacer, pen-in-hand annotation, and timer-enforced synthesis breaks. 45-minute wall cue to explain concepts out loud while moving.</p>
+    </div>
+  </div>
+
+  <p class="routine-category">Creation Protocols</p>
+  <div class="routine-grid">
+    <div class="routine-card">
+      <h4>Deep Writing Flow</h4>
+      <p>Fast draft phase (standing, dictating) followed by a seated edit pass. Get the ideas out first. Polish second. The system enforces the sequence.</p>
+    </div>
+    <div class="routine-card">
+      <h4>Coding Plan Sprint</h4>
+      <p>Architecture and logic flow before touching code. Map the component shape, schema, or algorithm. Force yourself to design-review before you type a single line.</p>
+    </div>
+    <div class="routine-card">
+      <h4>Coding Execution Sprint</h4>
+      <p>25-minute heads-down implementation. Park side ideas and tangents &mdash; the routine won&rsquo;t let you chase them. Ship the planned slice. Nothing else.</p>
+    </div>
+    <div class="routine-card">
+      <h4>Presentation Build</h4>
+      <p>Outline and narrative first &mdash; no design allowed. Visual polish only after the message is locked. Prevents the &ldquo;spent 3 hours picking fonts&rdquo; failure mode.</p>
+    </div>
+  </div>
+
+  <p class="routine-category">Operations Protocols</p>
+  <div class="routine-grid three-col">
+    <div class="routine-card">
+      <h4>Admin Sprint</h4>
+      <p>20-minute triage sprint. Sub-two-minute tasks: do now. Everything else: queue and move on. Batch-process the inbox of your life.</p>
+    </div>
+    <div class="routine-card">
+      <h4>Quick Start</h4>
+      <p>5-minute ignition protocol. Commit to the smallest possible next action with zero pressure to continue. Break the inertia. The rest follows.</p>
+    </div>
+    <div class="routine-card">
+      <h4>Debugging Reset</h4>
+      <p>Step away from the screen. Explain the bug path out loud. Write one specific next-step breadcrumb that makes restart easy. Break the loop.</p>
+    </div>
+  </div>
+
+  <ul class="overdrive-features">
+    <li><strong>Loop Mode</strong> &mdash; Run indefinite cycles for open-ended work sessions. The system keeps cycling until you stop it.</li>
+    <li><strong>Cycle-Cap Mode</strong> &mdash; Set a fixed number of repetitions and the session auto-completes. Perfect for time-boxed sprints.</li>
+    <li><strong>Phase Gates</strong> &mdash; The system won&rsquo;t let you skip the synthesis step. That&rsquo;s the point. Mandatory note capture where it matters.</li>
+    <li><strong>Custom Routines</strong> &mdash; Program your own protocols via <code>~/.gtd/routines.json</code>. JSON in, state machine out. Merged by ID with bundled routines.</li>
+    <li><strong>Dock Progress Ring</strong> &mdash; Your Dock icon becomes a live circular progress indicator during active sessions, rendered in your system accent color.</li>
+    <li><strong>Menu Bar Countdown</strong> &mdash; Native NSStatusItem live timer that adapts to light/dark mode. Always visible, never intrusive.</li>
+  </ul>
+</section>
+
+<!-- MID-PAGE CTA -->
+<div class="midpage-cta">
+  <p>Focus Overdrive alone is worth the deploy.</p>
+  <a href="https://github.com/clrscr/gtd-site/raw/main/GTD-1.0.0-beta.1.dmg" class="btn btn-primary">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Deploy to Your Mac &mdash; Free
+  </a>
+</div>
 
 <!-- WORKFLOWS -->
 <section id="workflows">
   <p class="section-label">Operational Modes</p>
   <h2>Hardwired productivity subroutines.</h2>
-  <p class="section-desc">These aren't features bolted on as afterthoughts. They're dedicated execution pipelines with purpose-built interfaces and keyboard macros for zero-latency activation.</p>
+  <p class="section-desc">These aren&rsquo;t features bolted on as afterthoughts. They&rsquo;re dedicated execution pipelines with purpose-built interfaces and keyboard macros for zero-latency activation.</p>
   <div class="workflows">
     <div class="workflow-card">
       <span class="kbd">&#8984;&#8679;B</span>
@@ -862,17 +1370,17 @@
     <div class="workflow-card">
       <span class="kbd">&#8984;&#8679;W</span>
       <h3>64-Bit Cognitive Routing &mdash; Weekly Review</h3>
-      <p>Execute your Weekly Review with unprecedented speed. Navigate through all six stages &mdash; from Inbox Zero to Someday/Maybe pruning &mdash; using dedicated keyboard macros to keep your hands on the keyboard and your mind in the matrix.</p>
+      <p>Execute your Weekly Review with unprecedented speed. Navigate all six stages &mdash; from Inbox Zero to Someday/Maybe pruning &mdash; using dedicated keyboard macros. Option+1 through Option+6 for zero-latency stage jumping. Hands on the keyboard. Mind in the matrix.</p>
     </div>
     <div class="workflow-card">
       <span class="kbd">&#8984;&#8679;N</span>
-      <h3>What's Next? &mdash; Decision Fatigue Eradicator</h3>
+      <h3>What&rsquo;s Next? &mdash; Decision Fatigue Eradicator</h3>
       <p>The Cognitive Routing Engine analyzes your entire system &mdash; deadlines, contexts, energy level, available bandwidth &mdash; and recommends the single optimal task to execute right now, with clear reasoning. Decision fatigue: terminated.</p>
     </div>
     <div class="workflow-card">
-      <span class="kbd">&#8984;&#8679;P</span>
-      <h3>Turbo Pomo &mdash; Focus Overdrive</h3>
-      <p>Lock a task, engage the timer, and enter the zone. Hardware-accelerated visual countdown, automatic break cycles, and per-task time telemetry. Your personal productivity dyno.</p>
+      <span class="kbd">&#8984;&#8679;K</span>
+      <h3>AI Cleanup Wizard &mdash; System Defragmentation</h3>
+      <p>Over time, every system accumulates cruft. The Cleanup Wizard runs a four-stage diagnostic: merge duplicate contexts, normalize naming conventions, remove unused contexts, and archive stale projects. Plus orphaned task detection and near-duplicate flagging. Works offline with local heuristics. AI enhances when configured. Your system, factory-fresh.</p>
     </div>
   </div>
 </section>
@@ -881,13 +1389,13 @@
 <section id="ai">
   <p class="section-label">Integrated Cyber-Semantic Expert System</p>
   <h2>Task Synthesis System (TSS)&trade;</h2>
-  <p class="section-desc">Equipped with an Integrated Cyber-Semantic Expert System, TaskBlaster Pro leverages state-of-the-art artificial intelligence to eradicate decision fatigue. Simply feed your chaotic thoughts into the Capture module, and watch as the TSS instantly categorizes, delegates, and structures your projects in real-time. No more open loops. No more processing bottlenecks. Just raw, unadulterated output.</p>
+  <p class="section-desc">Equipped with an Integrated Cyber-Semantic Expert System, TaskBlaster Pro leverages state-of-the-art artificial intelligence to eradicate decision fatigue. Feed your chaotic thoughts into the Capture module and watch as the TSS instantly categorizes, delegates, and structures your projects in real-time. No more open loops. No more processing bottlenecks. Just raw, unadulterated output.</p>
   <div class="ai-card">
     <div>
       <h3>Your on-board AI co-processor</h3>
       <p>The built-in assistant panel has full read access to your system state &mdash; tasks, projects, areas, contexts, deadlines &mdash; and uses that context to deliver recommendations no generic chatbot could compute. Ask it to decompose an overwhelming project into concrete next actions, identify neglected commitments, or run a decision tree with you in real-time.</p>
       <p>Drop in meeting transcripts, briefs, or any unstructured document and the TSS instantly extracts a fully structured project with actionable tasks &mdash; work that used to take 30 minutes synthesized in seconds.</p>
-      <p style="margin-top: 0.75rem; font-size: 0.85rem; color: var(--text-dim);">Bring your own API key. Compatible with Claude, OpenAI-compatible endpoints, and NanoGPT. Credentials stored in your OS keychain via hardware-backed encryption.</p>
+      <p style="margin-top: 0.75rem; font-size: 0.85rem; color: var(--text-dim);">No vendor lock-in. No monthly AI fee. Bring your own API key from Claude, any OpenAI-compatible endpoint, or NanoGPT. Credentials stored in your OS keychain via hardware-backed encryption. The AI is your co-processor, not your landlord.</p>
     </div>
     <ul class="ai-list">
       <li><strong>Neural Brain Dump</strong> &mdash; the AI adapts its interrogation protocol to your specific projects and areas, uncovering open loops and forgotten commitments buried deep in your wetware</li>
@@ -895,16 +1403,91 @@
       <li><strong>Cognitive Routing</strong> &mdash; the system weighs deadlines, context, energy level, and available bandwidth to compute the single optimal task to execute right now, with full reasoning output</li>
       <li><strong>Project Defibrillator</strong> &mdash; when a project flatlines, the TSS analyzes its current state and proposes the concrete next action to restart forward momentum</li>
       <li><strong>Document Ingestion Pipeline</strong> &mdash; feed it a meeting transcript, project brief, or brainstorm dump and receive a fully structured project with tasks in seconds</li>
+      <li><strong>System Defragmentation</strong> &mdash; four-stage diagnostic merges duplicate contexts, normalizes naming conventions, archives stale projects, and flags orphaned tasks. Works offline with local heuristics; AI enhances when connected</li>
       <li><strong>Full Manual Override</strong> &mdash; every AI feature has a complete manual fallback. Data is only transmitted to your chosen provider when you explicitly initiate. You are always the operator.</li>
     </ul>
   </div>
 </section>
 
+<!-- NATIVE macOS -->
+<section id="native">
+  <p class="section-label">Hardware-Level Integration</p>
+  <h2>Not a web app in a trenchcoat.</h2>
+  <p class="section-desc">TaskBlaster Pro doesn&rsquo;t run in Electron. It doesn&rsquo;t wrap a website in a frame. It&rsquo;s natively compiled and deeply integrated with macOS via PyObjC, exploiting APIs that web apps can&rsquo;t even see. The result: an app that feels like it shipped with your Mac.</p>
+  <div class="native-grid">
+    <div class="native-card">
+      <div class="native-icon">&#x1F310;</div>
+      <div>
+        <h3>Global Capture Hotkey</h3>
+        <p>Ctrl+Option+Space captures from ANY app without switching windows. The input field materializes system-wide. Type, hit Enter, keep working. Zero context-switch penalty.</p>
+      </div>
+    </div>
+    <div class="native-card">
+      <div class="native-icon">&#x2728;</div>
+      <div>
+        <h3>SF Symbols</h3>
+        <p>All 30 app icons render as native SF Symbols via PyObjC. They scale with accessibility settings, adapt to your system theme, and match every other native app on your Mac. No bitmap icons. No fuzzy scaling.</p>
+      </div>
+    </div>
+    <div class="native-card">
+      <div class="native-icon">&#x1F3A8;</div>
+      <div>
+        <h3>Sidebar Vibrancy</h3>
+        <p>NSVisualEffectView with .sidebar material. The sidebar blurs your desktop wallpaper through it, exactly like Finder and Mail. Because native apps have texture.</p>
+      </div>
+    </div>
+    <div class="native-card">
+      <div class="native-icon">&#x1F44B;</div>
+      <div>
+        <h3>Haptic Feedback</h3>
+        <p>Trackpad haptics fire on every task mutation: complete, move, create, edit, undo, redo. Your fingers feel the state change before your eyes see it.</p>
+      </div>
+    </div>
+    <div class="native-card">
+      <div class="native-icon">&#x1F4BB;</div>
+      <div>
+        <h3>Dock Integration</h3>
+        <p>Inbox count badge shows unprocessed items in real-time. During active Pomo or Focus Overdrive sessions, the Dock icon renders a live circular progress ring in your system accent color.</p>
+      </div>
+    </div>
+    <div class="native-card">
+      <div class="native-icon">&#x23F1;</div>
+      <div>
+        <h3>Menu Bar Timer</h3>
+        <p>Native NSStatusItem with a live countdown during Pomo and Focus Overdrive sessions. Adapts to light and dark mode automatically. Always visible, never intrusive.</p>
+      </div>
+    </div>
+    <div class="native-card">
+      <div class="native-icon">&#x1F4A8;</div>
+      <div>
+        <h3>Breathing Glow</h3>
+        <p>Subtle pulse animation during active sessions. The timer breathes with you &mdash; a visual rhythm that keeps you anchored in the flow state.</p>
+      </div>
+    </div>
+    <div class="native-card">
+      <div class="native-icon">&#x1F50A;</div>
+      <div>
+        <h3>System Sounds</h3>
+        <p>Tink on task completion. Glass on Weekly Review completion. Native macOS system sounds, not embedded audio files. Satisfying feedback that respects your system volume.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MID-PAGE CTA -->
+<div class="midpage-cta">
+  <p>Native. Local. Yours. Deploy the command center.</p>
+  <a href="https://github.com/clrscr/gtd-site/raw/main/GTD-1.0.0-beta.1.dmg" class="btn btn-primary">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Deploy to Your Mac &mdash; Free
+  </a>
+</div>
+
 <!-- PRIVACY -->
 <section class="privacy-section">
   <p class="section-label">Security Clearance</p>
   <h2>Your data never leaves the building.</h2>
-  <p class="section-desc">TaskBlaster Pro stores everything in a local SQLite database on your hard disk. No cloud servers. No subscription fees. No tracking cookies. No telemetry beacons. Your productivity data stays air-gapped on your personal workstation.</p>
+  <p class="section-desc">While other GTD apps require cloud accounts and monthly subscriptions to access your own data, TaskBlaster Pro stores everything in a local SQLite database on your hard disk. AI features only transmit data when you explicitly initiate. No cloud servers. No tracking cookies. No telemetry beacons. Your productivity data is classified information. We treat it that way.</p>
   <div class="privacy-points">
     <div class="privacy-point">
       <div class="icon">&#x1F512;</div>
@@ -923,6 +1506,10 @@
       <span>No telemetry</span>
     </div>
     <div class="privacy-point">
+      <div class="icon">&#x1F6E1;</div>
+      <span>Air-gapped by default</span>
+    </div>
+    <div class="privacy-point">
       <div class="icon">&#x1F4E6;</div>
       <span>Open source</span>
     </div>
@@ -933,13 +1520,16 @@
 <section id="shortcuts">
   <p class="section-label">Keyboard Macros</p>
   <h2>Hands on the keyboard. Mind in the matrix.</h2>
-  <p class="section-desc">Every critical operation has a dedicated keyboard macro. Mice are for consumers. Power users keep their hands where the throughput is.</p>
+  <p class="section-desc">18 keyboard macros. Every critical operation is one keystroke away. Mice are for consumers. Power users keep their hands where the throughput is.</p>
   <div class="shortcuts-grid">
     <div class="shortcut-item"><span>New Task</span> <span class="kbd">&#8984;N</span></div>
     <div class="shortcut-item"><span>Brain Dump</span> <span class="kbd">&#8984;&#8679;B</span></div>
     <div class="shortcut-item"><span>Weekly Review</span> <span class="kbd">&#8984;&#8679;W</span></div>
-    <div class="shortcut-item"><span>What's Next?</span> <span class="kbd">&#8984;&#8679;N</span></div>
+    <div class="shortcut-item"><span>What&rsquo;s Next?</span> <span class="kbd">&#8984;&#8679;N</span></div>
     <div class="shortcut-item"><span>Pomodoro</span> <span class="kbd">&#8984;&#8679;P</span></div>
+    <div class="shortcut-item"><span>Focus Overdrive</span> <span class="kbd">&#8984;&#8679;F</span></div>
+    <div class="shortcut-item"><span>AI Cleanup</span> <span class="kbd">&#8984;&#8679;K</span></div>
+    <div class="shortcut-item"><span>Global Capture</span> <span class="kbd">&#8963;&#8997;Space</span></div>
     <div class="shortcut-item"><span>Bulk Edit</span> <span class="kbd">&#8984;E</span></div>
     <div class="shortcut-item"><span>Search</span> <span class="kbd">&#8984;F</span></div>
     <div class="shortcut-item"><span>Assistant</span> <span class="kbd">&#8984;J</span></div>
@@ -947,6 +1537,9 @@
     <div class="shortcut-item"><span>Settings</span> <span class="kbd">&#8984;,</span></div>
     <div class="shortcut-item"><span>Toggle Sidebar</span> <span class="kbd">&#8984;&#8997;S</span></div>
     <div class="shortcut-item"><span>Toggle Toolbar</span> <span class="kbd">&#8984;&#8997;T</span></div>
+    <div class="shortcut-item"><span>Shortcuts Ref</span> <span class="kbd">&#8984;?</span></div>
+    <div class="shortcut-item"><span>Review Steps</span> <span class="kbd">&#8997;1&ndash;6</span></div>
+    <div class="shortcut-item"><span>Close Window</span> <span class="kbd">&#8984;W</span></div>
   </div>
 </section>
 
@@ -958,7 +1551,7 @@
   <div class="install-steps">
     <div class="install-step">
       <h3>Download the DMG</h3>
-      <p>Acquire the latest binary distribution above. A single 58 MB disk image.</p>
+      <p>Acquire the latest binary distribution above. A single 58 MB disk image. No Electron. No bundled Chromium. Just your app.</p>
     </div>
     <div class="install-step">
       <h3>Drag to Applications</h3>
@@ -978,149 +1571,170 @@
 </section>
 
 <!-- RELEASE NOTES -->
-<section id="releases">
-  <p class="section-label">Changelog</p>
-  <h2>Build history.</h2>
-  <p class="section-desc">TaskBlaster Pro is in active development. Here's the complete revision history.</p>
-  <div class="releases-timeline">
+<section id="releases" style="max-width: 900px;">
+  <div class="terminal-window">
+    <div class="terminal-titlebar">
+      <div class="terminal-dot red"></div>
+      <div class="terminal-dot yellow"></div>
+      <div class="terminal-dot green"></div>
+      <span class="terminal-title">bash &mdash; git log --oneline --decorate</span>
+    </div>
+    <div class="terminal-body">
+      <pre class="terminal-motd">████████╗ █████╗ ███████╗██╗  ██╗██████╗ ██╗      █████╗ ███████╗████████╗███████╗██████╗
+╚══██╔══╝██╔══██╗██╔════╝██║ ██╔╝██╔══██╗██║     ██╔══██╗██╔════╝╚══██╔══╝██╔════╝██╔══██╗
+   ██║   ███████║███████╗█████╔╝ ██████╔╝██║     ███████║███████╗   ██║   █████╗  ██████╔╝
+   ██║   ██╔══██║╚════██║██╔═██╗ ██╔══██╗██║     ██╔══██║╚════██║   ██║   ██╔══╝  ██╔══██╗
+   ██║   ██║  ██║███████║██║  ██╗██████╔╝███████╗██║  ██║███████║   ██║   ███████╗██║  ██║
+   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═════╝ ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝
+                                   ██████╗ ██████╗  ██████╗
+                                   ██╔══██╗██╔══██╗██╔═══██╗
+                                   ██████╔╝██████╔╝██║   ██║
+                                   ██╔═══╝ ██╔══██╗██║   ██║
+                                   ██║     ██║  ██║╚██████╔╝
+                                   ╚═╝     ╚═╝  ╚═╝ ╚═════╝
+</pre>
+      <div class="releases-timeline">
 
-    <!-- BETA 1 -->
-    <div class="release-entry latest">
-      <div class="release-header">
-        <h3>Beta 1</h3>
-        <span class="release-tag">v1.0.0-beta.1</span>
-        <span class="release-badge">Latest</span>
-        <span class="release-date">March 13, 2026</span>
-      </div>
-      <div class="release-body">
-        <p>The first beta milestone. Focus on data model stability, subtask support, and release polish.</p>
-        <h4>Added</h4>
-        <ul>
-          <li>Subtask support &mdash; break tasks into nested subtasks without creating a full project</li>
-          <li>Review tracking with completion dates for Weekly Review sessions</li>
-          <li>Breakdown mode setting for AI-assisted task decomposition</li>
-          <li>User manual bundled in-app (Help &gt; User Manual) and available as PDF</li>
-          <li>Overdue task badges on sidebar navigation items</li>
-          <li>Keyboard shortcuts reference dialog</li>
-          <li>Launch notification showing overdue and due-today task counts</li>
-        </ul>
-        <h4>Improved</h4>
-        <ul>
-          <li>Pre-freeze data model changes for schema stability going forward</li>
-        </ul>
+        <!-- BETA 1 -->
+        <div class="release-entry latest">
+          <div class="release-prompt">
+            <span class="release-cmd">git show <span class="tag-name">v1.0.0-beta.1</span></span>
+            <span class="release-badge">Latest</span>
+            <span class="release-date">2026-03-13</span>
+          </div>
+          <div class="release-body">
+            <p>The first beta milestone. Data model stability, subtask support, and release polish.</p>
+            <h4>Added</h4>
+            <ul>
+              <li>Subtask support &mdash; nested subtasks without creating a full project</li>
+              <li>Review tracking with completion dates for Weekly Review sessions</li>
+              <li>Breakdown mode setting for AI-assisted task decomposition</li>
+              <li>User manual bundled in-app and available as PDF</li>
+              <li>Overdue task badges on sidebar navigation items</li>
+              <li>Keyboard shortcuts reference dialog</li>
+              <li>Launch notification showing overdue and due-today task counts</li>
+            </ul>
+            <h4>Improved</h4>
+            <ul>
+              <li>Pre-freeze data model changes for schema stability going forward</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ALPHA 4 -->
+        <div class="release-entry">
+          <div class="release-prompt">
+            <span class="release-cmd">git show <span class="tag-name">v1.0.0-alpha.4</span></span>
+            <span class="release-date">2026-03-12</span>
+          </div>
+          <div class="release-body">
+            <p>Massive polish pass. Hundreds of UI, accessibility, workflow, and reliability improvements.</p>
+            <h4>Highlights</h4>
+            <ul>
+              <li>Copy Title action in task context menus</li>
+              <li>Chart colors adapt to light/dark themes across Pomo Analytics and Task Metrics</li>
+              <li>Assistant profile wizard with step-progress dots and trait tooltips</li>
+              <li>Popped-out assistant chat and major dialogs remember size and position</li>
+              <li>What's Next shows advisory cards with AI-vs-heuristic labeling and retry</li>
+              <li>Weekly Review adds clickable stepper navigation</li>
+              <li>Brain Dump shows section progress with edit/remove during capture</li>
+              <li>Task Metrics and Pomo Analytics embed QtCharts summaries</li>
+              <li>Undo-backed project and context editing</li>
+              <li>Task list columns and sidebar are user-resizable</li>
+              <li>Move-to-Trash and project-deletion confirmations show affected task counts</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ALPHA 3 -->
+        <div class="release-entry">
+          <div class="release-prompt">
+            <span class="release-cmd">git show <span class="tag-name">v1.0.0-alpha.3</span></span>
+            <span class="release-date">2026-03-11</span>
+          </div>
+          <div class="release-body">
+            <p>The assistant-focused alpha. Conversational AI, draft-first mutations, workflow integration.</p>
+            <h4>Highlights</h4>
+            <ul>
+              <li>Docked assistant chat panel and synchronized pop-out window</li>
+              <li>Assistant profile setup with custom display name, portraits, and traits</li>
+              <li>Local-first answers for task lookups, overdue/today/upcoming buckets, and time budgets</li>
+              <li>Draft-first mutations &mdash; assistant previews every change before writing it</li>
+              <li>Document import handoff from pasted text with one click</li>
+              <li>Brain Dump, What's Next, and Weekly Review share assistant identity</li>
+              <li>Drag-and-drop ordering for Next Actions and project task lists</li>
+              <li>Hardened backup/restore with integrity checks and atomic operations</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ALPHA 2 -->
+        <div class="release-entry">
+          <div class="release-prompt">
+            <span class="release-cmd">git show <span class="tag-name">v1.0.0-alpha.2</span></span>
+            <span class="release-date">2026-03-06</span>
+          </div>
+          <div class="release-body">
+            <p>Major feature expansion: Pomodoro timer, task metrics, What's Next, backup/restore, undo/redo.</p>
+            <h4>Highlights</h4>
+            <ul>
+              <li>Built-in Pomodoro timer with task linking and focus analytics</li>
+              <li>Duration estimates with AI-powered batch suggestions</li>
+              <li>What's Next? AI-assisted task recommendation</li>
+              <li>Backup &amp; Restore with atomic operations and integrity checks</li>
+              <li>Task Metrics with completion trends, streaks, and breakdowns</li>
+              <li>Waiting For follow-up dates with urgency-aware ordering</li>
+              <li>Undo/Redo stack for task operations</li>
+              <li>Native macOS styling with system appearance integration</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ALPHA 1 -->
+        <div class="release-entry">
+          <div class="release-prompt">
+            <span class="release-cmd">git show <span class="tag-name">v1.0.0-alpha</span></span>
+            <span class="release-date">2026-03-06</span>
+          </div>
+          <div class="release-body">
+            <p>First public alpha. The complete GTD workflow with optional AI features.</p>
+            <h4>Highlights</h4>
+            <ul>
+              <li>Full GTD workflow: Inbox, Next Actions, Waiting For, Someday/Maybe, Reference, Projects, Contexts</li>
+              <li>Brain Dump with quick capture, AI-coached guided capture, and manual fallback</li>
+              <li>AI clarification, next-step suggestions, task breakdown, and document import</li>
+              <li>Guided Weekly Review</li>
+              <li>Bulk editing across multiple tasks</li>
+              <li>Local-first SQLite storage &mdash; no account, no cloud</li>
+            </ul>
+          </div>
+        </div>
+
       </div>
     </div>
-
-    <!-- ALPHA 4 -->
-    <div class="release-entry">
-      <div class="release-header">
-        <h3>Alpha 4</h3>
-        <span class="release-tag">v1.0.0-alpha.4</span>
-        <span class="release-date">March 12, 2026</span>
-      </div>
-      <div class="release-body">
-        <p>Massive polish pass across all four development phases. Hundreds of UI, accessibility, workflow, and reliability improvements.</p>
-        <h4>Highlights</h4>
-        <ul>
-          <li>Copy Title action in task context menus</li>
-          <li>Chart colors adapt to light/dark themes across Pomo Analytics and Task Metrics</li>
-          <li>Assistant profile wizard with step-progress dots and trait tooltips</li>
-          <li>Popped-out assistant chat and major dialogs remember size and position</li>
-          <li>What's Next shows advisory cards with AI-vs-heuristic labeling and retry</li>
-          <li>Weekly Review adds clickable stepper navigation</li>
-          <li>Brain Dump shows section progress with edit/remove during capture</li>
-          <li>Task Metrics and Pomo Analytics embed QtCharts summaries</li>
-          <li>Undo-backed project and context editing</li>
-          <li>Task list columns and sidebar are user-resizable</li>
-          <li>Move-to-Trash and project-deletion confirmations now show affected task counts</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- ALPHA 3 -->
-    <div class="release-entry">
-      <div class="release-header">
-        <h3>Alpha 3</h3>
-        <span class="release-tag">v1.0.0-alpha.3</span>
-        <span class="release-date">March 11, 2026</span>
-      </div>
-      <div class="release-body">
-        <p>The assistant-focused alpha. Conversational AI, draft-first task changes, and workflow integration.</p>
-        <h4>Highlights</h4>
-        <ul>
-          <li>Docked assistant chat panel and synchronized pop-out window</li>
-          <li>Assistant profile setup with custom display name, portraits, and traits</li>
-          <li>Local-first answers for task lookups, overdue/today/upcoming buckets, and time budgets</li>
-          <li>Draft-first mutations &mdash; assistant previews every change before writing it</li>
-          <li>Document import handoff from pasted text with one click</li>
-          <li>Brain Dump, What's Next, and Weekly Review share assistant identity</li>
-          <li>Drag-and-drop ordering for Next Actions and project task lists</li>
-          <li>Hardened backup/restore with integrity checks and atomic operations</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- ALPHA 2 -->
-    <div class="release-entry">
-      <div class="release-header">
-        <h3>Alpha 2</h3>
-        <span class="release-tag">v1.0.0-alpha.2</span>
-        <span class="release-date">March 6, 2026</span>
-      </div>
-      <div class="release-body">
-        <p>Major feature expansion: Pomodoro timer, task metrics, What's Next, backup/restore, undo/redo, and native macOS polish.</p>
-        <h4>Highlights</h4>
-        <ul>
-          <li>Built-in Pomodoro timer with task linking and focus analytics</li>
-          <li>Duration estimates with AI-powered batch suggestions</li>
-          <li>What's Next? AI-assisted task recommendation</li>
-          <li>Backup &amp; Restore with atomic operations and integrity checks</li>
-          <li>Task Metrics with completion trends, streaks, and breakdowns</li>
-          <li>Waiting For follow-up dates with urgency-aware ordering</li>
-          <li>Undo/Redo stack for task operations</li>
-          <li>Native macOS styling with system appearance integration</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- ALPHA 1 -->
-    <div class="release-entry">
-      <div class="release-header">
-        <h3>Alpha 1</h3>
-        <span class="release-tag">v1.0.0-alpha</span>
-        <span class="release-date">March 6, 2026</span>
-      </div>
-      <div class="release-body">
-        <p>First public alpha. The complete GTD workflow with optional AI features.</p>
-        <h4>Highlights</h4>
-        <ul>
-          <li>Full GTD workflow: Inbox, Next Actions, Waiting For, Someday/Maybe, Reference, Projects, Contexts</li>
-          <li>Brain Dump with quick capture, AI-coached guided capture, and manual fallback</li>
-          <li>AI clarification, next-step suggestions, task breakdown, and document import</li>
-          <li>Guided Weekly Review</li>
-          <li>Bulk editing across multiple tasks</li>
-          <li>Local-first SQLite storage &mdash; no account, no cloud</li>
-        </ul>
-      </div>
-    </div>
-
   </div>
+</section>
+
+<!-- WARNING BANNER 2 -->
+<section style="text-align: center; padding: 2rem;">
+  <p class="warning-glitch" style="font-size: 1.2rem; font-weight: 800; letter-spacing: 0.04em; color: #fbbf24;">&#x1F6A8; SYSTEM ALERT: UNPROCESSED ITEMS DETECTED IN YOUR WETWARE &#x1F6A8;</p>
 </section>
 
 <!-- CTA -->
 <section class="cta-section">
-  <h2>Initialize your command center.</h2>
-  <p>Free. Open source. Natively compiled. Built for operators who take their throughput seriously.</p>
+  <h2>Your inbox has been full since last year.</h2>
+  <p>Every day you wait is another day of open loops, broken commitments, and cognitive overhead burning your mental CPU. Deploy TaskBlaster Pro. Reclaim your bandwidth.</p>
   <div class="hero-buttons">
     <a href="https://github.com/clrscr/gtd-site/raw/main/GTD-1.0.0-beta.1.dmg" class="btn btn-primary">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Download for Mac
+      Deploy to Your Mac &mdash; Free
     </a>
     <a href="https://github.com/clrscr/gtd" class="btn btn-secondary">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
       View on GitHub
     </a>
   </div>
+  <p class="cta-trust">No account. No subscription. No telemetry. 58 MB. 60 seconds to deploy.</p>
 </section>
 
 <!-- FOOTER -->
@@ -1132,7 +1746,132 @@
     <a href="https://github.com/clrscr/gtd/issues">Report a Bug</a>
   </div>
   <p>A <strong>MadTech</strong> Joint</p>
+  <div class="visitor-counter">
+    You are visitor #<span class="counter-badge" id="visitor-count">000,000</span>
+  </div>
+  <span class="best-viewed">Best viewed on Apple Silicon at 120Hz</span>
 </footer>
+
+<canvas id="matrix-canvas"></canvas>
+
+<script>
+// --- Visitor Counter (days since epoch, fake but slowly incrementing) ---
+(function() {
+  var d = Math.floor(Date.now() / 86400000);
+  var s = String(d).padStart(6, '0');
+  s = s.slice(0,3) + ',' + s.slice(3);
+  var el = document.getElementById('visitor-count');
+  if (el) el.textContent = s;
+})();
+
+// --- Hero Typing Animation ---
+(function() {
+  var h1 = document.querySelector('.hero h1');
+  if (!h1) return;
+  var original = h1.innerHTML;
+  // Extract text nodes to type, preserving HTML structure
+  var line1 = 'Your Mental RAM Is Full.';
+  var line2 = 'Time to Upgrade the Operating System.';
+  h1.innerHTML = '<span class="typing-cursor"></span>';
+  var cursor = h1.querySelector('.typing-cursor');
+  var i = 0;
+  var phase = 1; // 1 = line1, 2 = br+span open, 3 = line2, 4 = done
+
+  function type() {
+    if (phase === 1) {
+      if (i < line1.length) {
+        h1.insertBefore(document.createTextNode(line1[i]), cursor);
+        i++;
+        setTimeout(type, 45 + Math.random() * 30);
+      } else {
+        var br = document.createElement('br');
+        h1.insertBefore(br, cursor);
+        var span = document.createElement('span');
+        h1.insertBefore(span, cursor);
+        // Move cursor inside span
+        span.appendChild(cursor);
+        phase = 3;
+        i = 0;
+        setTimeout(type, 200);
+      }
+    } else if (phase === 3) {
+      var span = cursor.parentElement;
+      if (i < line2.length) {
+        span.insertBefore(document.createTextNode(line2[i]), cursor);
+        i++;
+        setTimeout(type, 40 + Math.random() * 25);
+      } else {
+        cursor.classList.add('done');
+        setTimeout(function() { cursor.classList.add('hidden'); }, 1800);
+      }
+    }
+  }
+  setTimeout(type, 600);
+})();
+
+// --- Konami Code Easter Egg ---
+(function() {
+  var seq = [38,38,40,40,37,39,37,39,66,65];
+  var pos = 0;
+  var canvas = document.getElementById('matrix-canvas');
+  var ctx = canvas ? canvas.getContext('2d') : null;
+  var running = false;
+
+  document.addEventListener('keydown', function(e) {
+    if (e.keyCode === seq[pos]) {
+      pos++;
+      if (pos === seq.length) {
+        pos = 0;
+        if (!running) startMatrix();
+      }
+    } else {
+      pos = 0;
+    }
+  });
+
+  function startMatrix() {
+    if (!canvas || !ctx) return;
+    running = true;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    canvas.classList.add('active');
+
+    var fontSize = 14;
+    var cols = Math.floor(canvas.width / fontSize);
+    var drops = [];
+    for (var c = 0; c < cols; c++) drops[c] = Math.random() * -50 | 0;
+    var chars = 'TASKBLASTERPRO01アイウエオカキクケコサシスセソGTD';
+
+    var interval = setInterval(function() {
+      ctx.fillStyle = 'rgba(10, 15, 26, 0.08)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#00ff41';
+      ctx.font = fontSize + 'px "SF Mono", Menlo, monospace';
+      for (var c = 0; c < cols; c++) {
+        if (drops[c] >= 0) {
+          var ch = chars[Math.random() * chars.length | 0];
+          ctx.fillText(ch, c * fontSize, drops[c] * fontSize);
+        }
+        drops[c]++;
+        if (drops[c] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[c] = 0;
+        }
+      }
+    }, 40);
+
+    setTimeout(function() {
+      canvas.classList.remove('active');
+      canvas.classList.add('fade-out');
+      setTimeout(function() {
+        clearInterval(interval);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        canvas.classList.remove('fade-out');
+        running = false;
+      }, 500);
+    }, 5000);
+  }
+})();
+</script>
 
 </body>
 </html>
