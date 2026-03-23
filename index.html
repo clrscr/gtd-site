@@ -1600,23 +1600,62 @@
           <div class="release-prompt">
             <span class="release-cmd">git show <span class="tag-name">v1.0.0-beta.1</span></span>
             <span class="release-badge">Latest</span>
-            <span class="release-date">2026-03-13</span>
+            <span class="release-date">2026-03-23</span>
           </div>
           <div class="release-body">
-            <p>The first beta milestone. Data model stability, subtask support, and release polish.</p>
-            <h4>Added</h4>
+            <p>First beta. Major macOS-native expansion, Focus Overdrive engine, new panels, data model hardening.</p>
+            <h4>Focus Overdrive</h4>
             <ul>
-              <li>Subtask support &mdash; nested subtasks without creating a full project</li>
-              <li>Review tracking with completion dates for Weekly Review sessions</li>
-              <li>Breakdown mode setting for AI-assisted task decomposition</li>
-              <li>User manual bundled in-app and available as PDF</li>
-              <li>Overdue task badges on sidebar navigation items</li>
-              <li>Keyboard shortcuts reference dialog</li>
-              <li>Launch notification showing overdue and due-today task counts</li>
+              <li>Focus Overdrive engine &mdash; structured timed loops with phase gates, wall cues, note capture, and prep checklists</li>
+              <li>11 bundled routines: Video Study, Audio Learning, Digital/Paper Reading, Deep Writing, Admin Sprint, Presentation Build, Quick Start, Coding Plan/Execution Sprint, Debugging Reset</li>
+              <li>Focus panel with routine picker, session setup (loop/cycle-cap), prep gate, active timer, phase transitions, session summary</li>
+              <li>Task-linked focus sessions &mdash; right-click any task to launch a routine</li>
+              <li>Custom routines via ~/.gtd/routines.json, merged by ID with bundled</li>
+              <li>Focus Mode (Cmd+Shift+F) &mdash; distraction-free overlay with task, project, and timer only</li>
             </ul>
-            <h4>Improved</h4>
+            <h4>macOS Native</h4>
             <ul>
-              <li>Pre-freeze data model changes for schema stability going forward</li>
+              <li>SF Symbols &mdash; all 30 icons as native SF Symbols via PyObjC, cached and resolution-independent</li>
+              <li>Sidebar vibrancy &mdash; NSVisualEffectView with .sidebar material, always active</li>
+              <li>Global capture hotkey &mdash; Ctrl+Option+Space from any app via NSEvent global monitor</li>
+              <li>Dock progress ring &mdash; circular progress during active sessions using system accent color</li>
+              <li>Dock badge &mdash; red inbox count, auto-updating on data changes</li>
+              <li>Menu bar timer &mdash; native NSStatusItem with live countdown, light/dark adaptive</li>
+              <li>Haptic feedback &mdash; trackpad haptics on task mutations and undo/redo</li>
+              <li>Timer breathing glow &mdash; subtle opacity pulse during active sessions</li>
+              <li>Native notifications &mdash; UNUserNotificationCenter with actionable buttons for pomo/focus transitions</li>
+            </ul>
+            <h4>New Panels &amp; Workflows</h4>
+            <ul>
+              <li>Today panel &mdash; combined view of overdue, due-today, and deferred-until-today tasks</li>
+              <li>Inline quick-add bar (Cmd+N) &mdash; slim bar with smart context-aware defaults</li>
+              <li>Inline inbox processing &mdash; card-by-card triage inside the Inbox panel</li>
+              <li>Task completion chaining &mdash; floating "What's next?" popover after completing a task</li>
+              <li>Weekly review guided mode &mdash; navigates through real panels instead of modal wizard</li>
+              <li>AI Cleanup wizard (Cmd+Shift+K) &mdash; merge duplicates, normalize naming, archive stale, flag orphans</li>
+            </ul>
+            <h4>Interaction &amp; Polish</h4>
+            <ul>
+              <li>Inline cell editing &mdash; double-click title or due date for in-place editing</li>
+              <li>Natural language dates &mdash; "tomorrow", "3d", "next friday", "end of month"</li>
+              <li>Drag tasks to sidebar categories with undo support</li>
+              <li>Persistent timer bar at top of window during active sessions</li>
+              <li>Undo toast notifications with floating "Undo" button</li>
+              <li>Keyboard-first navigation &mdash; Space toggles, Enter opens, Delete trashes</li>
+            </ul>
+            <h4>Data Model</h4>
+            <ul>
+              <li>Subtask support via parent_task_id with progress indicators and auto-completion cascading</li>
+              <li>Areas of Focus &mdash; first-class areas table with project assignment and Weekly Review step</li>
+              <li>Task defer dates / tickler with deferred-state rendering and visibility rules</li>
+              <li>Review cycle tracking &mdash; reviews table recording weekly review completions</li>
+              <li>Ordered schema migrations via PRAGMA application_id + user_version</li>
+            </ul>
+            <h4>Bug Fixes</h4>
+            <ul>
+              <li>Fixed tray icon rendering, pomo stale state on launch, backup WAL/SHM cleanup</li>
+              <li>Fixed AI Cleanup executor, legacy backup restore, CSV import compatibility</li>
+              <li>Removed non-native panel fade animation</li>
             </ul>
           </div>
         </div>
@@ -1628,20 +1667,28 @@
             <span class="release-date">2026-03-12</span>
           </div>
           <div class="release-body">
-            <p>Massive polish pass. Hundreds of UI, accessibility, workflow, and reliability improvements.</p>
-            <h4>Highlights</h4>
+            <p>Massive polish pass. Hundreds of UI, accessibility, workflow, and reliability improvements across all four development phases.</p>
+            <h4>Improved</h4>
             <ul>
-              <li>Copy Title action in task context menus</li>
-              <li>Chart colors adapt to light/dark themes across Pomo Analytics and Task Metrics</li>
-              <li>Assistant profile wizard with step-progress dots and trait tooltips</li>
-              <li>Popped-out assistant chat and major dialogs remember size and position</li>
               <li>What's Next shows advisory cards with AI-vs-heuristic labeling and retry</li>
-              <li>Weekly Review adds clickable stepper navigation</li>
+              <li>Weekly Review adds clickable stepper navigation and step-action feedback</li>
               <li>Brain Dump shows section progress with edit/remove during capture</li>
-              <li>Task Metrics and Pomo Analytics embed QtCharts summaries</li>
-              <li>Undo-backed project and context editing</li>
+              <li>Task Metrics and Pomo Analytics embed QtCharts summaries alongside tables</li>
+              <li>Chart colors derive from system palette, adapting to light/dark themes</li>
+              <li>Popped-out assistant chat and major dialogs remember size and position</li>
+              <li>Assistant profile wizard with step-progress dots and trait tooltips</li>
+              <li>Undo-backed project and context editing through the command layer</li>
               <li>Task list columns and sidebar are user-resizable</li>
+              <li>Sortable shared task lists with stable sort keys and drag-to-reorder</li>
+              <li>Ctrl+F selects existing search text for immediate replacement</li>
+            </ul>
+            <h4>Fixed</h4>
+            <ul>
+              <li>Assistant typing indicators, stale portraits, semantic card palette recursion</li>
+              <li>Task dialog no longer selects entire title on edit</li>
+              <li>Assistant planner max_tokens mismatch and truncation recovery</li>
               <li>Move-to-Trash and project-deletion confirmations show affected task counts</li>
+              <li>Bulk edit shows guidance when no fields checked or insufficient selection</li>
             </ul>
           </div>
         </div>
@@ -1653,15 +1700,23 @@
             <span class="release-date">2026-03-11</span>
           </div>
           <div class="release-body">
-            <p>The assistant-focused alpha. Conversational AI, draft-first mutations, workflow integration.</p>
-            <h4>Highlights</h4>
+            <p>The assistant-focused alpha. Conversational AI, draft-first task mutations, and workflow integration.</p>
+            <h4>Assistant</h4>
             <ul>
               <li>Docked assistant chat panel and synchronized pop-out window</li>
               <li>Assistant profile setup with custom display name, portraits, and traits</li>
               <li>Local-first answers for task lookups, overdue/today/upcoming buckets, and time budgets</li>
-              <li>Draft-first mutations &mdash; assistant previews every change before writing it</li>
+            </ul>
+            <h4>Draft-First Mutations</h4>
+            <ul>
+              <li>Assistant drafts creates, edits, moves, completions, waiting-for, recurring tasks</li>
+              <li>Every mutation previewed before writing &mdash; confirm/cancel, full-editor round trips, conflict handling</li>
+              <li>Applied actions collapse into chat records with follow-up actions and undo support</li>
+            </ul>
+            <h4>Workflows</h4>
+            <ul>
               <li>Document import handoff from pasted text with one click</li>
-              <li>Brain Dump, What's Next, and Weekly Review share assistant identity</li>
+              <li>Brain Dump, What's Next, Weekly Review share assistant identity</li>
               <li>Drag-and-drop ordering for Next Actions and project task lists</li>
               <li>Hardened backup/restore with integrity checks and atomic operations</li>
             </ul>
@@ -1675,17 +1730,23 @@
             <span class="release-date">2026-03-06</span>
           </div>
           <div class="release-body">
-            <p>Major feature expansion: Pomodoro timer, task metrics, What's Next, backup/restore, undo/redo.</p>
-            <h4>Highlights</h4>
+            <p>Major feature expansion with Pomodoro timer, analytics, and native macOS polish.</p>
+            <h4>Features</h4>
             <ul>
-              <li>Built-in Pomodoro timer with task linking and focus analytics</li>
-              <li>Duration estimates with AI-powered batch suggestions</li>
-              <li>What's Next? AI-assisted task recommendation</li>
-              <li>Backup &amp; Restore with atomic operations and integrity checks</li>
-              <li>Task Metrics with completion trends, streaks, and breakdowns</li>
-              <li>Waiting For follow-up dates with urgency-aware ordering</li>
+              <li>Pomodoro timer &mdash; circular countdown, work/break cycles, task linking, session history, analytics by day/week/task/project</li>
+              <li>Duration estimates with AI-powered single and batch suggestions</li>
+              <li>What's Next? (Cmd+Shift+N) &mdash; AI asks context/energy/time, recommends optimal task</li>
+              <li>Backup &amp; Restore &mdash; atomic restore with migration, integrity checks, foreign-key validation</li>
+              <li>Task Metrics &mdash; completion trends, streaks, per-project breakdowns, date range presets</li>
+              <li>Waiting For follow-up dates with urgency-aware ordering and overdue highlighting</li>
               <li>Undo/Redo stack for task operations</li>
-              <li>Native macOS styling with system appearance integration</li>
+            </ul>
+            <h4>macOS Polish</h4>
+            <ul>
+              <li>Native Qt style with system appearance and accent color integration</li>
+              <li>Palette-aware colors throughout &mdash; timer, AI dialogs, Waiting For panel</li>
+              <li>Sidebar with grouped section headers and symbolic icons</li>
+              <li>Shared typography system using macOS-native point sizes</li>
             </ul>
           </div>
         </div>
@@ -1701,11 +1762,11 @@
             <h4>Highlights</h4>
             <ul>
               <li>Full GTD workflow: Inbox, Next Actions, Waiting For, Someday/Maybe, Reference, Projects, Contexts</li>
-              <li>Brain Dump with quick capture, AI-coached guided capture, and manual fallback</li>
-              <li>AI clarification, next-step suggestions, task breakdown, and document import</li>
-              <li>Guided Weekly Review</li>
+              <li>Brain Dump &mdash; quick capture, AI-coached guided capture, and manual fallback</li>
+              <li>AI features &mdash; clarify inbox items, suggest next steps/contexts, break down tasks, import documents</li>
+              <li>Guided five-step Weekly Review</li>
               <li>Bulk editing across multiple tasks</li>
-              <li>Local-first SQLite storage &mdash; no account, no cloud</li>
+              <li>Local-first SQLite at ~/.gtd/gtd.db &mdash; no account, no cloud</li>
             </ul>
           </div>
         </div>
