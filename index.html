@@ -1085,7 +1085,7 @@
      ║                                                              ║
      ║   While you're here:                                         ║
      ║     - The Konami Code still works. Try it.                   ║
-     ║     - https://github.com/clrscr/gtd                         ║
+     ║     - https://github.com/clrscr/Task-Blaster                         ║
      ║                                                              ║
      ║   "Your mental RAM is full. Time to upgrade."                ║
      ║                                                              ║
@@ -1106,7 +1106,7 @@
     <a href="#ai">AI</a>
     <a href="#releases">Releases</a>
     <a href="user-manual.pdf">Manual</a>
-    <a href="https://github.com/clrscr/gtd-site/raw/main/GTD-1.0.0-beta.1.dmg" class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Deploy to Mac</a>
+    <a href="TaskBlaster-Pro-1.0-beta.1.dmg" class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Deploy to Mac</a>
   </div>
 </nav>
 
@@ -1116,13 +1116,13 @@
   <h1>Your Mental RAM Is Full.<br /><span>Time to Upgrade the Operating System.</span></h1>
   <p class="subtitle">Every broken commitment is an open loop burning background cycles in your brain. Every &ldquo;I&rsquo;ll get to it later&rdquo; is a memory leak draining your throughput. Cloud-dependent, subscription-hungry to-do apps won&rsquo;t fix this &mdash; they&rsquo;re the digital equivalent of shuffling papers. You need a real system. A natively compiled, local-first command center that implements the complete Getting Things Done methodology on bare metal.</p>
   <div class="hero-buttons">
-    <a href="https://github.com/clrscr/gtd-site/raw/main/GTD-1.0.0-beta.1.dmg" class="btn btn-primary">
+    <a href="TaskBlaster-Pro-1.0-beta.1.dmg" class="btn btn-primary">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       Deploy to Your Mac
     </a>
     <a href="user-manual.pdf" class="btn btn-secondary">Read the Manual</a>
   </div>
-  <p class="hero-meta">macOS (Apple Silicon) <span>&bull;</span> v1.0.0-beta.1 <span>&bull;</span> Free &amp; open source <span>&bull;</span> No account required</p>
+  <p class="hero-meta">macOS (Apple Silicon) <span>&bull;</span> v1.0-beta.1 <span>&bull;</span> Free &amp; open source <span>&bull;</span> No account required</p>
   <p class="hero-trust">No account. No subscription. No telemetry. Just your Mac and your mind.</p>
 </section>
 
@@ -1341,7 +1341,7 @@
     <li><strong>Loop Mode</strong> &mdash; Run indefinite cycles for open-ended work sessions. The system keeps cycling until you stop it.</li>
     <li><strong>Cycle-Cap Mode</strong> &mdash; Set a fixed number of repetitions and the session auto-completes. Perfect for time-boxed sprints.</li>
     <li><strong>Phase Gates</strong> &mdash; The system won&rsquo;t let you skip the synthesis step. That&rsquo;s the point. Mandatory note capture where it matters.</li>
-    <li><strong>Custom Routines</strong> &mdash; Program your own protocols via <code>~/.gtd/routines.json</code>. JSON in, state machine out. Merged by ID with bundled routines.</li>
+    <li><strong>Custom Routines</strong> &mdash; Program your own protocols via <code>~/.taskblaster/routines.json</code>. JSON in, state machine out. Merged by ID with bundled routines.</li>
     <li><strong>Dock Progress Ring</strong> &mdash; Your Dock icon becomes a live circular progress indicator during active sessions, rendered in your system accent color.</li>
     <li><strong>Menu Bar Countdown</strong> &mdash; Native NSStatusItem live timer that adapts to light/dark mode. Always visible, never intrusive.</li>
   </ul>
@@ -1350,7 +1350,7 @@
 <!-- MID-PAGE CTA -->
 <div class="midpage-cta">
   <p>Focus Overdrive alone is worth the deploy.</p>
-  <a href="https://github.com/clrscr/gtd-site/raw/main/GTD-1.0.0-beta.1.dmg" class="btn btn-primary">
+  <a href="TaskBlaster-Pro-1.0-beta.1.dmg" class="btn btn-primary">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
     Deploy to Your Mac &mdash; Free
   </a>
@@ -1413,7 +1413,7 @@
 <section id="native">
   <p class="section-label">Hardware-Level Integration</p>
   <h2>Not a web app in a trenchcoat.</h2>
-  <p class="section-desc">TaskBlaster Pro doesn&rsquo;t run in Electron. It doesn&rsquo;t wrap a website in a frame. It&rsquo;s natively compiled and deeply integrated with macOS via PyObjC, exploiting APIs that web apps can&rsquo;t even see. The result: an app that feels like it shipped with your Mac.</p>
+  <p class="section-desc">TaskBlaster Pro doesn&rsquo;t run in Electron. It doesn&rsquo;t wrap a website in a frame. It&rsquo;s natively compiled in Swift and deeply integrated with macOS, exploiting APIs that web apps can&rsquo;t even see. The result: an app that feels like it shipped with your Mac.</p>
   <div class="native-grid">
     <div class="native-card">
       <div class="native-icon">&#x1F310;</div>
@@ -1426,7 +1426,7 @@
       <div class="native-icon">&#x2728;</div>
       <div>
         <h3>SF Symbols</h3>
-        <p>All 30 app icons render as native SF Symbols via PyObjC. They scale with accessibility settings, adapt to your system theme, and match every other native app on your Mac. No bitmap icons. No fuzzy scaling.</p>
+        <p>All 30 app icons render as native SF Symbols via SwiftUI. They scale with accessibility settings, adapt to your system theme, and match every other native app on your Mac. No bitmap icons. No fuzzy scaling.</p>
       </div>
     </div>
     <div class="native-card">
@@ -1477,7 +1477,7 @@
 <!-- MID-PAGE CTA -->
 <div class="midpage-cta">
   <p>Native. Local. Yours. Deploy the command center.</p>
-  <a href="https://github.com/clrscr/gtd-site/raw/main/GTD-1.0.0-beta.1.dmg" class="btn btn-primary">
+  <a href="TaskBlaster-Pro-1.0-beta.1.dmg" class="btn btn-primary">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
     Deploy to Your Mac &mdash; Free
   </a>
@@ -1487,7 +1487,7 @@
 <section class="privacy-section">
   <p class="section-label">Security Clearance</p>
   <h2>Your data never leaves the building.</h2>
-  <p class="section-desc">While other GTD apps require cloud accounts and monthly subscriptions to access your own data, TaskBlaster Pro stores everything in a local SQLite database on your hard disk. AI features only transmit data when you explicitly initiate. No cloud servers. No tracking cookies. No telemetry beacons. Your productivity data is classified information. We treat it that way.</p>
+  <p class="section-desc">While other GTD apps require cloud accounts and monthly subscriptions to access your own data, TaskBlaster Pro stores everything in a local SwiftData database on your hard disk. AI features only transmit data when you explicitly initiate. No cloud servers. No tracking cookies. No telemetry beacons. Your productivity data is classified information. We treat it that way.</p>
   <div class="privacy-points">
     <div class="privacy-point">
       <div class="icon">&#x1F512;</div>
@@ -1551,7 +1551,7 @@
   <div class="install-steps">
     <div class="install-step">
       <h3>Download the DMG</h3>
-      <p>Acquire the latest binary distribution above. A single 58 MB disk image. No Electron. No bundled Chromium. Just your app.</p>
+      <p>Acquire the latest binary distribution above. A single 9 MB disk image. No Electron. No bundled Chromium. Just your app.</p>
     </div>
     <div class="install-step">
       <h3>Drag to Applications</h3>
@@ -1566,7 +1566,7 @@
     <strong>Why the extra step?</strong> TaskBlaster Pro is currently in beta and not yet notarized with Apple. Right-click &gt; Open bypasses Gatekeeper for this app only. Alternatively, go to System Settings &gt; Privacy &amp; Security and click "Open Anyway" after the first blocked launch. This will not be needed once the app is signed for release.
   </div>
   <div class="install-note" style="margin-top: 0.75rem; background: rgba(33,150,243,0.06); border-color: rgba(33,150,243,0.15);">
-    <strong>System requirements:</strong> macOS 13 Ventura or later on Apple Silicon (M1/M2/M3/M4). Intel Macs are not currently supported.
+    <strong>System requirements:</strong> macOS 26 Tahoe or later on Apple Silicon.
   </div>
 </section>
 
@@ -1598,7 +1598,7 @@
         <!-- BETA 1 -->
         <div class="release-entry latest">
           <div class="release-prompt">
-            <span class="release-cmd">git show <span class="tag-name">v1.0.0-beta.1</span></span>
+            <span class="release-cmd">git show <span class="tag-name">v1.0-beta.1</span></span>
             <span class="release-badge">Latest</span>
             <span class="release-date">2026-03-23</span>
           </div>
@@ -1610,12 +1610,12 @@
               <li>11 bundled routines: Video Study, Audio Learning, Digital/Paper Reading, Deep Writing, Admin Sprint, Presentation Build, Quick Start, Coding Plan/Execution Sprint, Debugging Reset</li>
               <li>Focus panel with routine picker, session setup (loop/cycle-cap), prep gate, active timer, phase transitions, session summary</li>
               <li>Task-linked focus sessions &mdash; right-click any task to launch a routine</li>
-              <li>Custom routines via ~/.gtd/routines.json, merged by ID with bundled</li>
+              <li>Custom routines via ~/.taskblaster/routines.json, merged by ID with bundled</li>
               <li>Focus Mode (Cmd+Shift+F) &mdash; distraction-free overlay with task, project, and timer only</li>
             </ul>
             <h4>macOS Native</h4>
             <ul>
-              <li>SF Symbols &mdash; all 30 icons as native SF Symbols via PyObjC, cached and resolution-independent</li>
+              <li>SF Symbols &mdash; all 30 icons as native SF Symbols via SwiftUI, cached and resolution-independent</li>
               <li>Sidebar vibrancy &mdash; NSVisualEffectView with .sidebar material, always active</li>
               <li>Global capture hotkey &mdash; Ctrl+Option+Space from any app via NSEvent global monitor</li>
               <li>Dock progress ring &mdash; circular progress during active sessions using system accent color</li>
@@ -1645,131 +1645,22 @@
             </ul>
             <h4>Data Model</h4>
             <ul>
-              <li>Subtask support via parent_task_id with progress indicators and auto-completion cascading</li>
+              <li>Subtask support with progress indicators and auto-completion cascading</li>
               <li>Areas of Focus &mdash; first-class areas table with project assignment and Weekly Review step</li>
               <li>Task defer dates / tickler with deferred-state rendering and visibility rules</li>
               <li>Review cycle tracking &mdash; reviews table recording weekly review completions</li>
-              <li>Ordered schema migrations via PRAGMA application_id + user_version</li>
+              <li>Ordered schema migrations via SwiftData lightweight migration</li>
             </ul>
             <h4>Bug Fixes</h4>
             <ul>
-              <li>Fixed tray icon rendering, pomo stale state on launch, backup WAL/SHM cleanup</li>
+              <li>Fixed menu bar icon rendering, pomo stale state on launch, backup file cleanup</li>
               <li>Fixed AI Cleanup executor, legacy backup restore, CSV import compatibility</li>
               <li>Removed non-native panel fade animation</li>
             </ul>
           </div>
         </div>
 
-        <!-- ALPHA 4 -->
-        <div class="release-entry">
-          <div class="release-prompt">
-            <span class="release-cmd">git show <span class="tag-name">v1.0.0-alpha.4</span></span>
-            <span class="release-date">2026-03-12</span>
-          </div>
-          <div class="release-body">
-            <p>Massive polish pass. Hundreds of UI, accessibility, workflow, and reliability improvements across all four development phases.</p>
-            <h4>Improved</h4>
-            <ul>
-              <li>What's Next shows advisory cards with AI-vs-heuristic labeling and retry</li>
-              <li>Weekly Review adds clickable stepper navigation and step-action feedback</li>
-              <li>Brain Dump shows section progress with edit/remove during capture</li>
-              <li>Task Metrics and Pomo Analytics embed QtCharts summaries alongside tables</li>
-              <li>Chart colors derive from system palette, adapting to light/dark themes</li>
-              <li>Popped-out assistant chat and major dialogs remember size and position</li>
-              <li>Assistant profile wizard with step-progress dots and trait tooltips</li>
-              <li>Undo-backed project and context editing through the command layer</li>
-              <li>Task list columns and sidebar are user-resizable</li>
-              <li>Sortable shared task lists with stable sort keys and drag-to-reorder</li>
-              <li>Ctrl+F selects existing search text for immediate replacement</li>
-            </ul>
-            <h4>Fixed</h4>
-            <ul>
-              <li>Assistant typing indicators, stale portraits, semantic card palette recursion</li>
-              <li>Task dialog no longer selects entire title on edit</li>
-              <li>Assistant planner max_tokens mismatch and truncation recovery</li>
-              <li>Move-to-Trash and project-deletion confirmations show affected task counts</li>
-              <li>Bulk edit shows guidance when no fields checked or insufficient selection</li>
-            </ul>
-          </div>
-        </div>
 
-        <!-- ALPHA 3 -->
-        <div class="release-entry">
-          <div class="release-prompt">
-            <span class="release-cmd">git show <span class="tag-name">v1.0.0-alpha.3</span></span>
-            <span class="release-date">2026-03-11</span>
-          </div>
-          <div class="release-body">
-            <p>The assistant-focused alpha. Conversational AI, draft-first task mutations, and workflow integration.</p>
-            <h4>Assistant</h4>
-            <ul>
-              <li>Docked assistant chat panel and synchronized pop-out window</li>
-              <li>Assistant profile setup with custom display name, portraits, and traits</li>
-              <li>Local-first answers for task lookups, overdue/today/upcoming buckets, and time budgets</li>
-            </ul>
-            <h4>Draft-First Mutations</h4>
-            <ul>
-              <li>Assistant drafts creates, edits, moves, completions, waiting-for, recurring tasks</li>
-              <li>Every mutation previewed before writing &mdash; confirm/cancel, full-editor round trips, conflict handling</li>
-              <li>Applied actions collapse into chat records with follow-up actions and undo support</li>
-            </ul>
-            <h4>Workflows</h4>
-            <ul>
-              <li>Document import handoff from pasted text with one click</li>
-              <li>Brain Dump, What's Next, Weekly Review share assistant identity</li>
-              <li>Drag-and-drop ordering for Next Actions and project task lists</li>
-              <li>Hardened backup/restore with integrity checks and atomic operations</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- ALPHA 2 -->
-        <div class="release-entry">
-          <div class="release-prompt">
-            <span class="release-cmd">git show <span class="tag-name">v1.0.0-alpha.2</span></span>
-            <span class="release-date">2026-03-06</span>
-          </div>
-          <div class="release-body">
-            <p>Major feature expansion with Pomodoro timer, analytics, and native macOS polish.</p>
-            <h4>Features</h4>
-            <ul>
-              <li>Pomodoro timer &mdash; circular countdown, work/break cycles, task linking, session history, analytics by day/week/task/project</li>
-              <li>Duration estimates with AI-powered single and batch suggestions</li>
-              <li>What's Next? (Cmd+Shift+N) &mdash; AI asks context/energy/time, recommends optimal task</li>
-              <li>Backup &amp; Restore &mdash; atomic restore with migration, integrity checks, foreign-key validation</li>
-              <li>Task Metrics &mdash; completion trends, streaks, per-project breakdowns, date range presets</li>
-              <li>Waiting For follow-up dates with urgency-aware ordering and overdue highlighting</li>
-              <li>Undo/Redo stack for task operations</li>
-            </ul>
-            <h4>macOS Polish</h4>
-            <ul>
-              <li>Native Qt style with system appearance and accent color integration</li>
-              <li>Palette-aware colors throughout &mdash; timer, AI dialogs, Waiting For panel</li>
-              <li>Sidebar with grouped section headers and symbolic icons</li>
-              <li>Shared typography system using macOS-native point sizes</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- ALPHA 1 -->
-        <div class="release-entry">
-          <div class="release-prompt">
-            <span class="release-cmd">git show <span class="tag-name">v1.0.0-alpha</span></span>
-            <span class="release-date">2026-03-06</span>
-          </div>
-          <div class="release-body">
-            <p>First public alpha. The complete GTD workflow with optional AI features.</p>
-            <h4>Highlights</h4>
-            <ul>
-              <li>Full GTD workflow: Inbox, Next Actions, Waiting For, Someday/Maybe, Reference, Projects, Contexts</li>
-              <li>Brain Dump &mdash; quick capture, AI-coached guided capture, and manual fallback</li>
-              <li>AI features &mdash; clarify inbox items, suggest next steps/contexts, break down tasks, import documents</li>
-              <li>Guided five-step Weekly Review</li>
-              <li>Bulk editing across multiple tasks</li>
-              <li>Local-first SQLite at ~/.gtd/gtd.db &mdash; no account, no cloud</li>
-            </ul>
-          </div>
-        </div>
 
       </div>
     </div>
@@ -1786,16 +1677,16 @@
   <h2>Your inbox has been full since last year.</h2>
   <p>Every day you wait is another day of open loops, broken commitments, and cognitive overhead burning your mental CPU. Deploy TaskBlaster Pro. Reclaim your bandwidth.</p>
   <div class="hero-buttons">
-    <a href="https://github.com/clrscr/gtd-site/raw/main/GTD-1.0.0-beta.1.dmg" class="btn btn-primary">
+    <a href="TaskBlaster-Pro-1.0-beta.1.dmg" class="btn btn-primary">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       Deploy to Your Mac &mdash; Free
     </a>
-    <a href="https://github.com/clrscr/gtd" class="btn btn-secondary">
+    <a href="https://github.com/clrscr/Task-Blaster" class="btn btn-secondary">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
       View on GitHub
     </a>
   </div>
-  <p class="cta-trust">No account. No subscription. No telemetry. 58 MB. 60 seconds to deploy.</p>
+  <p class="cta-trust">No account. No subscription. No telemetry. 9 MB. 60 seconds to deploy.</p>
 </section>
 
 <!-- FOOTER -->
@@ -1803,8 +1694,8 @@
   <div class="links">
     <a href="#releases">Release Notes</a>
     <a href="user-manual.pdf">User Manual</a>
-    <a href="https://github.com/clrscr/gtd">Source Code</a>
-    <a href="https://github.com/clrscr/gtd/issues">Report a Bug</a>
+    <a href="https://github.com/clrscr/Task-Blaster">Source Code</a>
+    <a href="https://github.com/clrscr/Task-Blaster/issues">Report a Bug</a>
   </div>
   <p>A <strong>MadTech</strong> Joint</p>
   <div class="visitor-counter">
