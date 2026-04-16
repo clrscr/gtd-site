@@ -1106,7 +1106,7 @@
     <a href="#ai">AI</a>
     <a href="#releases">Releases</a>
     <a href="user-manual.pdf">Manual</a>
-    <a href="TaskBlaster-Pro-1.0-beta.1.dmg" class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Deploy to Mac</a>
+    <a href="TaskBlaster-Pro-1.0-beta.2.dmg" class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Deploy to Mac</a>
   </div>
 </nav>
 
@@ -1116,13 +1116,13 @@
   <h1>Your Mental RAM Is Full.<br /><span>Time to Upgrade the Operating System.</span></h1>
   <p class="subtitle">Every broken commitment is an open loop burning background cycles in your brain. Every &ldquo;I&rsquo;ll get to it later&rdquo; is a memory leak draining your throughput. Cloud-dependent, subscription-hungry to-do apps won&rsquo;t fix this &mdash; they&rsquo;re the digital equivalent of shuffling papers. You need a real system. A natively compiled, local-first command center that implements the complete Getting Things Done methodology on bare metal.</p>
   <div class="hero-buttons">
-    <a href="TaskBlaster-Pro-1.0-beta.1.dmg" class="btn btn-primary">
+    <a href="TaskBlaster-Pro-1.0-beta.2.dmg" class="btn btn-primary">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       Deploy to Your Mac
     </a>
     <a href="user-manual.pdf" class="btn btn-secondary">Read the Manual</a>
   </div>
-  <p class="hero-meta">macOS (Apple Silicon) <span>&bull;</span> v1.0-beta.1 <span>&bull;</span> Free &amp; open source <span>&bull;</span> No account required</p>
+  <p class="hero-meta">macOS (Apple Silicon) <span>&bull;</span> v1.0-beta.2 <span>&bull;</span> Free &amp; open source <span>&bull;</span> No account required</p>
   <p class="hero-trust">No account. No subscription. No telemetry. Just your Mac and your mind.</p>
 </section>
 
@@ -1350,7 +1350,7 @@
 <!-- MID-PAGE CTA -->
 <div class="midpage-cta">
   <p>Focus Overdrive alone is worth the deploy.</p>
-  <a href="TaskBlaster-Pro-1.0-beta.1.dmg" class="btn btn-primary">
+  <a href="TaskBlaster-Pro-1.0-beta.2.dmg" class="btn btn-primary">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
     Deploy to Your Mac &mdash; Free
   </a>
@@ -1477,7 +1477,7 @@
 <!-- MID-PAGE CTA -->
 <div class="midpage-cta">
   <p>Native. Local. Yours. Deploy the command center.</p>
-  <a href="TaskBlaster-Pro-1.0-beta.1.dmg" class="btn btn-primary">
+  <a href="TaskBlaster-Pro-1.0-beta.2.dmg" class="btn btn-primary">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
     Deploy to Your Mac &mdash; Free
   </a>
@@ -1595,11 +1595,115 @@
 </pre>
       <div class="releases-timeline">
 
-        <!-- BETA 1 -->
+        <!-- BETA 2 -->
         <div class="release-entry latest">
           <div class="release-prompt">
-            <span class="release-cmd">git show <span class="tag-name">v1.0-beta.1</span></span>
+            <span class="release-cmd">git show <span class="tag-name">v1.0-beta.2</span></span>
             <span class="release-badge">Latest</span>
+            <span class="release-date">2026-04-16</span>
+          </div>
+          <div class="release-body">
+            <p>Second beta. MCP server hardened for concurrency and security, Focus Overdrive session controls, Keychain-backed secrets, async import/export with progress, and a new Dev Commands subsystem with native log viewer. 62 commits since beta.1.</p>
+            <h4>Focus Overdrive</h4>
+            <ul>
+              <li>Manual transition mode &mdash; pause at each phase boundary, acknowledge before continuing, optional note capture per phase</li>
+              <li>Editable phase durations from the routine detail screen &mdash; session-only by default, or <em>Save as Default</em> to persist overrides to ~/.taskblaster/routines.json</li>
+              <li>Wall-clock timer &mdash; phases no longer drift when the Mac sleeps or the app is backgrounded</li>
+              <li>Orphaned-session recovery on launch &mdash; an interrupted focus run is surfaced for resume/discard instead of dangling in the database</li>
+              <li>Terminal-voice copy pass &mdash; <code>LAUNCH</code> &rarr; <code>EXECUTE</code>, <code>Select your mission</code> &rarr; <code>LOAD A PROTOCOL</code>, <code>MISSION COMPLETE</code> &rarr; <code>SESSION COMPLETE</code></li>
+              <li>Larger timer-instruction text area for longer phase descriptions</li>
+            </ul>
+            <h4>MCP Server (Concurrency, Security, Perf)</h4>
+            <ul>
+              <li>Constant-time bearer-token comparison &mdash; eliminates timing side-channel on the auth path</li>
+              <li>Bearer token cached in memory after first read &mdash; no Keychain round-trip per request</li>
+              <li>Empty token default on bundle exports &mdash; live tokens are only baked in when the user explicitly opts in, closing a token-leak regression class covered by new tests</li>
+              <li>Structured cancellation on server teardown and transport disconnect &mdash; clean shutdowns, no leaked tasks</li>
+              <li>Serialized enable/disable transitions &mdash; rapid toggles can no longer race the server lifecycle</li>
+              <li>O(n) header parsing in HTTPWire &mdash; replaces O(n&sup2;) rescan on fragmented TCP reads</li>
+              <li>Bundle export moved off the main thread with modern icon rasterization</li>
+              <li>Editable port with range validation in Settings (default 47821)</li>
+              <li>Dead <code>MainActor</code> hops removed from the HTTP transport hot path</li>
+              <li>MCP panel gains full VoiceOver labels and keyboard navigation</li>
+              <li><code>ISO8601DateFormatter</code> replaced with <code>Date.ISO8601FormatStyle</code> across the MCP layer</li>
+            </ul>
+            <h4>Security &amp; Privacy</h4>
+            <ul>
+              <li>Keychain-backed storage for AI provider API keys and MCP bearer tokens &mdash; previously <code>@AppStorage</code> (UserDefaults, plaintext)</li>
+              <li>In-memory Keychain backend auto-selected under XCTest via <code>XCTestConfigurationFilePath</code> &mdash; tests run headless, no macOS unlock prompts on re-signed binaries</li>
+              <li>MCP panel shows current token status without redisplaying the secret; copy-confirmation auto-dismisses and cancels cleanly on re-copy</li>
+            </ul>
+            <h4>Assistant</h4>
+            <ul>
+              <li>Clickable task links in chat bubbles &mdash; tool-call results now accumulate into an attributed-string link surface that jumps to the task</li>
+              <li>Tool loop hardening &mdash; blank-bubble prevention, deferred <code>isThinking</code> reset, 19 code-review findings addressed in one pass</li>
+              <li>Relaxed extrema parsing and stripped tool scaffolding from the chat context window</li>
+              <li>Local query handler&rsquo;s random-item regex now tolerates interstitial modifiers</li>
+            </ul>
+            <h4>AI Configuration</h4>
+            <ul>
+              <li>Configurable timeouts for single-task AI operations and batch operations &mdash; exposed in Settings &rarr; AI</li>
+              <li>Unsaved AI settings guard &mdash; closing the window with pending edits prompts for save/discard instead of silently dropping changes</li>
+              <li>AIParser category resolution hardened against label-vs-rawValue drift &mdash; three-tier fallback (rawValue &rarr; display label &rarr; normalized token) with 26 new test cases</li>
+            </ul>
+            <h4>Pomodoro</h4>
+            <ul>
+              <li>Wall-clock timer with orphan-session recovery (same fix family as Focus Overdrive)</li>
+              <li>Analytics + menu bar timer now respond to live settings changes without restart</li>
+              <li>Data-integrity pass across the Pomo session model</li>
+            </ul>
+            <h4>Import / Export &amp; Backup</h4>
+            <ul>
+              <li>Async I/O with progress tracking for import, export, and restore &mdash; large vaults no longer freeze the UI</li>
+              <li>HIG-compliant restore flow &mdash; confirmation, progress, and result reporting match macOS conventions</li>
+              <li>CSV parsing consolidated; backup pruning optimized; dead import/export paths removed</li>
+              <li>Data-safety pass &mdash; safer atomic writes and headless-test remediation</li>
+            </ul>
+            <h4>Dev Commands &amp; Log Viewer (new)</h4>
+            <ul>
+              <li>Extensible dev-command system with a native log viewer for on-device diagnostics</li>
+              <li>Subsystem constants and simplified logging infrastructure &mdash; easier to trace a single feature without noise</li>
+            </ul>
+            <h4>Quick Add &amp; Menu Bar</h4>
+            <ul>
+              <li>Standalone Quick Add window accessible from the menu bar without opening the main app</li>
+              <li>Quick Add now responds correctly to keyboard and focus events</li>
+              <li>Invoking Quick Add from a non-task view now navigates to Inbox first, so the captured item has a home</li>
+            </ul>
+            <h4>Settings</h4>
+            <ul>
+              <li>Dirty-state logic consolidated into a single <code>FormModel</code> &mdash; discard/restore cycle is now predictable across every settings pane</li>
+              <li>Profile hydration gates prevent stale data from leaking between provider switches</li>
+              <li>HIG alignment, accessibility, and DX polish across Settings surfaces</li>
+            </ul>
+            <h4>Panels, Navigation &amp; Commands</h4>
+            <ul>
+              <li>Comprehensive sidebar / router / menu-bar remediation pass from PR code-review</li>
+              <li>Per-row <code>@Query</code> counts, localized sort, and dynamic predicates across task panels &mdash; faster first paint, correct locale-aware ordering</li>
+              <li>Collapsed duplicated selection state; per-project disclosure with delete-safety guards</li>
+              <li>Area / Context / Project services now flow through <code>CommandExecutor</code> for undo/redo parity with tasks</li>
+              <li><code>#Predicate</code> literals migrated across task queries</li>
+            </ul>
+            <h4>Data Integrity</h4>
+            <ul>
+              <li>Centralized active-task predicate fixes the &ldquo;20 overdue tasks&rdquo; launch alert when Today Panel showed none &mdash; one source of truth across 8 call sites</li>
+              <li>AI Cleanup wizard: orphan detection, cancellation, main-thread correctness, and HIG polish</li>
+              <li>Brain Dump, Process Inbox, and review surfaces: state-management fixes from the PR review</li>
+            </ul>
+            <h4>Bug Fixes &amp; Stability</h4>
+            <ul>
+              <li>Theme adaptive function made <code>nonisolated</code> &mdash; fixes actor-isolation crash on dynamic <code>NSColor</code> resolution</li>
+              <li>Countdown timer explicit <code>@MainActor</code> isolation on its <code>Task</code> closure</li>
+              <li>Timer endpoint dot alignment and animation timing corrected</li>
+              <li>Task form now uses native <code>Section</code> containers; custom header helper removed</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BETA 1 -->
+        <div class="release-entry">
+          <div class="release-prompt">
+            <span class="release-cmd">git show <span class="tag-name">v1.0-beta.1</span></span>
             <span class="release-date">2026-03-23</span>
           </div>
           <div class="release-body">
@@ -1677,7 +1781,7 @@
   <h2>Your inbox has been full since last year.</h2>
   <p>Every day you wait is another day of open loops, broken commitments, and cognitive overhead burning your mental CPU. Deploy TaskBlaster Pro. Reclaim your bandwidth.</p>
   <div class="hero-buttons">
-    <a href="TaskBlaster-Pro-1.0-beta.1.dmg" class="btn btn-primary">
+    <a href="TaskBlaster-Pro-1.0-beta.2.dmg" class="btn btn-primary">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       Deploy to Your Mac &mdash; Free
     </a>
