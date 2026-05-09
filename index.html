@@ -1106,7 +1106,7 @@
     <a href="#ai">AI</a>
     <a href="#releases">Releases</a>
     <a href="user-manual.pdf">Manual</a>
-    <a href="TaskBlaster-Pro-1.0-beta.2.dmg" class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Deploy to Mac</a>
+    <a href="TaskBlaster-Pro-1.0.dmg" class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Deploy to Mac</a>
   </div>
 </nav>
 
@@ -1116,13 +1116,13 @@
   <h1>Your Mental RAM Is Full.<br /><span>Time to Upgrade the Operating System.</span></h1>
   <p class="subtitle">Every broken commitment is an open loop burning background cycles in your brain. Every &ldquo;I&rsquo;ll get to it later&rdquo; is a memory leak draining your throughput. Cloud-dependent, subscription-hungry to-do apps won&rsquo;t fix this &mdash; they&rsquo;re the digital equivalent of shuffling papers. You need a real system. A natively compiled, local-first command center that implements the complete Getting Things Done methodology on bare metal.</p>
   <div class="hero-buttons">
-    <a href="TaskBlaster-Pro-1.0-beta.2.dmg" class="btn btn-primary">
+    <a href="TaskBlaster-Pro-1.0.dmg" class="btn btn-primary">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       Deploy to Your Mac
     </a>
     <a href="user-manual.pdf" class="btn btn-secondary">Read the Manual</a>
   </div>
-  <p class="hero-meta">macOS (Apple Silicon) <span>&bull;</span> v1.0-beta.2 <span>&bull;</span> Free &amp; open source <span>&bull;</span> No account required</p>
+  <p class="hero-meta">macOS (Apple Silicon) <span>&bull;</span> v1.0 <span>&bull;</span> Free &amp; open source <span>&bull;</span> No account required</p>
   <p class="hero-trust">No account. No subscription. No telemetry. Just your Mac and your mind.</p>
 </section>
 
@@ -1350,7 +1350,7 @@
 <!-- MID-PAGE CTA -->
 <div class="midpage-cta">
   <p>Focus Overdrive alone is worth the deploy.</p>
-  <a href="TaskBlaster-Pro-1.0-beta.2.dmg" class="btn btn-primary">
+  <a href="TaskBlaster-Pro-1.0.dmg" class="btn btn-primary">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
     Deploy to Your Mac &mdash; Free
   </a>
@@ -1477,7 +1477,7 @@
 <!-- MID-PAGE CTA -->
 <div class="midpage-cta">
   <p>Native. Local. Yours. Deploy the command center.</p>
-  <a href="TaskBlaster-Pro-1.0-beta.2.dmg" class="btn btn-primary">
+  <a href="TaskBlaster-Pro-1.0.dmg" class="btn btn-primary">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
     Deploy to Your Mac &mdash; Free
   </a>
@@ -1563,7 +1563,7 @@
     </div>
   </div>
   <div class="install-note">
-    <strong>Why the extra step?</strong> TaskBlaster Pro is currently in beta and not yet notarized with Apple. Right-click &gt; Open bypasses Gatekeeper for this app only. Alternatively, go to System Settings &gt; Privacy &amp; Security and click "Open Anyway" after the first blocked launch. This will not be needed once the app is signed for release.
+    <strong>Why the extra step?</strong> TaskBlaster Pro 1.0 is self-signed and not yet notarized with Apple. Right-click &gt; Open bypasses Gatekeeper for this app only. Alternatively, go to System Settings &gt; Privacy &amp; Security and click "Open Anyway" after the first blocked launch. A future build will switch to notarized distribution and remove the extra step.
   </div>
   <div class="install-note" style="margin-top: 0.75rem; background: rgba(33,150,243,0.06); border-color: rgba(33,150,243,0.15);">
     <strong>System requirements:</strong> macOS 26 Tahoe or later on Apple Silicon.
@@ -1595,11 +1595,59 @@
 </pre>
       <div class="releases-timeline">
 
-        <!-- BETA 2 -->
+        <!-- v1.0.0 -->
         <div class="release-entry latest">
           <div class="release-prompt">
-            <span class="release-cmd">git show <span class="tag-name">v1.0-beta.2</span></span>
+            <span class="release-cmd">git show <span class="tag-name">v1.0.0</span></span>
             <span class="release-badge">Latest</span>
+            <span class="release-date">2026-05-09</span>
+          </div>
+          <div class="release-body">
+            <p>First public release. Build 1000. Native macOS GTD command center, Swift 6 strict concurrency, SwiftData persistence, in-process MCP server, and several Swift-exclusive capabilities &mdash; matches or exceeds the Python reference app feature-for-feature.</p>
+            <h4>New in 1.0</h4>
+            <ul>
+              <li>Six-step Weekly Review with dedicated Review Areas step (<code>&#8679;1</code>&ndash;<code>&#8679;6</code>)</li>
+              <li>Inline cell editing &mdash; double-click a task title to rename, or a due date to edit with natural language</li>
+              <li>Focus Mode (<code>&#8984;&#8679;F</code>) &mdash; distraction-free overlay over Pomo or Overdrive sessions</li>
+              <li>Theme system &mdash; 80s Corp, 80s Retro, Synthwave, with light/dark variants and live-preview swatches</li>
+              <li>Themed About window replaces the AppKit panel</li>
+              <li>Sidebar hide/show &mdash; per-item visibility toggle; Weekly Review respects hidden items</li>
+              <li>Backup v2 &mdash; manifest-driven format with preferences snapshot and hardened restore validation</li>
+              <li>Pomo streak auto-reset after inactivity threshold; Focus Overdrive phase-complete notifications</li>
+              <li><code>&#8984;I</code> edits selected task(s); <code>&#8984;N</code> adds tasks directly to the open project</li>
+              <li>Assistant Profile &mdash; customizable name, portrait, and personality traits injected into AI prompts</li>
+            </ul>
+            <h4>Performance &amp; correctness</h4>
+            <ul>
+              <li>Eliminated a SwiftUI <code>body</code> loop at launch by centralizing persisted UI state in <code>AppRouter</code></li>
+              <li>Overdue checks use <code>startOfDay</code> cutoff to match <code>isOverdue</code> semantics</li>
+              <li>Test-host side effects (notifications, listeners, on-disk SwiftData stores) gated behind <code>XCTestConfigurationFilePath</code></li>
+              <li>Sidebar / Today bucketing in single passes with shared <code>topLevelOnly</code> helper</li>
+              <li>Today badge count aligned with panel display via top-level predicates</li>
+              <li>Task edit sheet caps height so the form scrolls when subtasks fill the dialog</li>
+            </ul>
+            <h4>Distribution</h4>
+            <ul>
+              <li>Self-signed (ad-hoc) for 1.0; notarized distribution planned for a future build</li>
+              <li>Build 1000 &mdash; <code>baseline 748 + 252 commits</code> at the <code>v1.0.0</code> tag</li>
+              <li>110+ unit tests across 5 phases; UI tests reorganized into per-section classes (Sheets / Navigation / Menus / Windows / Toolbar)</li>
+              <li>264 SwiftLint warnings eliminated; repo-wide swiftformat applied; pre-commit hook enforces both</li>
+            </ul>
+            <h4>Swift-exclusive (vs. Python reference)</h4>
+            <ul>
+              <li>21-tool MCP server with bearer-token auth, mutation toggle, and tool-call logging</li>
+              <li>One-click MCPB bundle export for host installation</li>
+              <li>Local LLM provider via LM Studio / llama.cpp</li>
+              <li>SwiftData with lightweight migration and <code>DataIntegrityService</code> auto-healing of duplicate identifiers</li>
+              <li>Swift 6 <code>Sendable</code> + <code>@MainActor</code> isolation across the entire codebase</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BETA 2 -->
+        <div class="release-entry">
+          <div class="release-prompt">
+            <span class="release-cmd">git show <span class="tag-name">v1.0-beta.2</span></span>
             <span class="release-date">2026-04-16</span>
           </div>
           <div class="release-body">
@@ -1781,7 +1829,7 @@
   <h2>Your inbox has been full since last year.</h2>
   <p>Every day you wait is another day of open loops, broken commitments, and cognitive overhead burning your mental CPU. Deploy TaskBlaster Pro. Reclaim your bandwidth.</p>
   <div class="hero-buttons">
-    <a href="TaskBlaster-Pro-1.0-beta.2.dmg" class="btn btn-primary">
+    <a href="TaskBlaster-Pro-1.0.dmg" class="btn btn-primary">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       Deploy to Your Mac &mdash; Free
     </a>
